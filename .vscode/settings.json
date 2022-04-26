@@ -1,0 +1,11 @@
+{
+  "css.validate": false,
+  "tailwindCSS.emmetCompletions": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
+    "source.organizeImports": true
+  },
+  "cSpell.words": ["Horiz", "Swiper", "Unfollow"]
+}
