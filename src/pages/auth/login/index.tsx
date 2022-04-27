@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { FormikHelpers, useFormik } from "formik";
 import { Fragment } from "react";
+import { Helmet } from "react-helmet";
 import { ImSpinner2 } from "react-icons/im";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
@@ -11,7 +12,8 @@ const className = {
   box: "shadow-mine bg-white mt-4 p-4 rounded-md",
   title: "text-lg text-neutral-800 text-center",
   form: "mt-4",
-  button: "px-4 py-2.5 text-center text-xl rounded-md font-semibold",
+  button:
+    "px-4 py-2.5 text-center text-xl rounded-md font-semibold disabled:active:scale-100 active:scale-[0.98] disabled:cursor-not-allowed",
   loginBtn:
     "block w-full bg-secondary disabled:bg-secondary/50 hover:bg-secondary/90 text-white",
   forgot:
@@ -62,6 +64,9 @@ export default function Login() {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>Log In | We Chat</title>
+      </Helmet>
       <div className={className.box}>
         <h3 className={className.title}>Log in to We Chat</h3>
         <form className={className.form} onSubmit={handleSubmit}>
@@ -115,7 +120,6 @@ export default function Login() {
           </Link>
         </div>
         <TextDivide classes={{ root: "py-2.5 px-4 w-full" }}>or</TextDivide>
-
         <div className="py-1.5 flex justify-center">
           <Link
             to="/auth/register"

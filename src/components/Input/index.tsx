@@ -7,7 +7,7 @@ const className = {
   root: "py-1.5",
   formControl: "border px-4 py-3.5 rounded-md flex items-center",
   formInput:
-    "outline-0 shadow-none text-lg bg-transparent autofill:bg-transparent text-neutral-800 block basis-full focus:placeholder:text-[#dddfe2]",
+    "outline-0 shadow-none text-lg bg-transparent text-neutral-800 basis-full min-w-0 focus:placeholder:text-[#dddfe2]",
   show: "outline-0 shadow-none border-0 bg-transparent ml-1.5",
   showIcon: "text-[#7f7f7f] cursor-pointer",
   error: "mt-2 text-xs text-red-500",

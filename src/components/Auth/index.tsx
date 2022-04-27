@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Footer from "../Footer";
 import Logo from "../Logo";
 
 const className = {
@@ -17,7 +18,7 @@ export default function AuthWrapper({ children }: Props) {
         <Logo classes={{ img: "h-16 md:h-20" }} />
         {children}
       </main>
-      <footer className="bg-white h-52">hello</footer>
+      <Footer />
     </section>
   );
 }
