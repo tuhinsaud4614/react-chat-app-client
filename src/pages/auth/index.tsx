@@ -5,6 +5,7 @@ import AuthWrapper from "../../components/Auth";
 const LoginPage = React.lazy(() => import("./login"));
 const RegisterPage = React.lazy(() => import("./register"));
 const ForgotPasswordPage = React.lazy(() => import("./forgot-password"));
+const ResetPasswordPage = React.lazy(() => import("./reset-password"));
 const NotFoundPage = React.lazy(() => import("../user/not-found"));
 
 function Auth() {
@@ -36,6 +37,16 @@ function Auth() {
           <React.Suspense fallback={<>...</>}>
             <AuthWrapper>
               <ForgotPasswordPage />
+            </AuthWrapper>
+          </React.Suspense>
+        }
+      />
+      <Route
+        path="/reset-password"
+        element={
+          <React.Suspense fallback={<>...</>}>
+            <AuthWrapper>
+              <ResetPasswordPage />
             </AuthWrapper>
           </React.Suspense>
         }
