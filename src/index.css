@@ -6,4 +6,8 @@
   .shadow-mine {
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1), 0 8px 16px rgb(0, 0, 0, 0.1);
   }
+
+  .shadow-mine-1 {
+    box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1), 0 2px 4px rgb(0, 0, 0, 0.1);
+  }
 }

@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { FormikHelpers, useFormik } from "formik";
-import { Fragment } from "react";
+import { Fragment, useId } from "react";
 import { Helmet } from "react-helmet";
 import { ImSpinner2 } from "react-icons/im";
 import { Link } from "react-router-dom";
@@ -62,6 +62,9 @@ export default function Login() {
     validationSchema: schema,
   });
 
+  const emailId = useId();
+  const passwordId = useId();
+
   return (
     <Fragment>
       <Helmet>
@@ -72,7 +75,7 @@ export default function Login() {
         <form className={className.form} onSubmit={handleSubmit}>
           <Input
             type="email"
-            id="email"
+            id={emailId}
             name="email"
             value={values.email}
             placeholder="Email address"
@@ -86,7 +89,7 @@ export default function Login() {
           />
           <Input
             type="password"
-            id="password"
+            id={passwordId}
             name="password"
             value={values.password}
             placeholder="Password"

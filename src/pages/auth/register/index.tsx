@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { FormikHelpers, useFormik } from "formik";
-import { Fragment } from "react";
+import { Fragment, useId } from "react";
 import { Helmet } from "react-helmet";
 import { ImSpinner2 } from "react-icons/im";
 import { Link } from "react-router-dom";
@@ -74,6 +74,12 @@ export default function Register() {
     validationSchema: schema,
   });
 
+  const firstName = useId();
+  const lastName = useId();
+  const emailId = useId();
+  const passwordId = useId();
+  const confirmPasswordId = useId();
+
   return (
     <Fragment>
       <Helmet>
@@ -85,7 +91,7 @@ export default function Register() {
         <form className={className.form} onSubmit={handleSubmit}>
           <div className={className.group}>
             <Input
-              id="firstName"
+              id={firstName}
               name="firstName"
               value={values.firstName}
               placeholder="First name"
@@ -98,8 +104,7 @@ export default function Register() {
               classes={{ root: className.groupItem }}
             />
             <Input
-              classes={{ root: className.groupItem }}
-              id="lastName"
+              id={lastName}
               name="lastName"
               value={values.lastName}
               placeholder="Last name"
@@ -109,11 +114,12 @@ export default function Register() {
               touched={touched.lastName}
               autoComplete="name"
               aria-label="Last name"
+              classes={{ root: className.groupItem }}
             />
           </div>
           <Input
             type="email"
-            id="email"
+            id={emailId}
             name="email"
             value={values.email}
             placeholder="Email address"
@@ -127,7 +133,7 @@ export default function Register() {
           />
           <Input
             type="password"
-            id="password"
+            id={passwordId}
             name="password"
             value={values.password}
             placeholder="Password"
@@ -140,7 +146,7 @@ export default function Register() {
           />
           <Input
             type="password"
-            id="confirmPassword"
+            id={confirmPasswordId}
             name="confirmPassword"
             value={values.confirmPassword}
             placeholder="Confirm password"

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
 import Admin from "./pages/admin";
 import Auth from "./pages/auth";
 import User from "./pages/user";

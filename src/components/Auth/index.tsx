@@ -3,7 +3,7 @@ import Footer from "../Footer";
 import Logo from "../Logo";
 
 const className = {
-  container: "bg-[#f0f2f5]",
+  container: "bg-zinc-50",
   content: "mx-auto py-20 w-full md:max-w-[24.75rem] px-4 md:px-0",
 };
 
