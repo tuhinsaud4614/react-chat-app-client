@@ -6,7 +6,7 @@ import User from "./pages/user";
 
 const useAuth = () => {
   const role: "user" | "admin" = "user";
-  return { auth: false, role: role } as const;
+  return { auth: true, role: role } as const;
 };
 
 function App() {
