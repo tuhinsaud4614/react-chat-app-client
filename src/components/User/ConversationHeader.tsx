@@ -6,7 +6,7 @@ const className = {
   root: "flex items-center justify-between px-4 py-2.5 w-full",
   avatar: "w-10 h-10 overflow-hidden rounded-full",
   title: "text-lg font-semibold text-primary flex-1 text-center px-2.5",
-  icon: "text-secondary hover:text-secondary/70",
+  icon: "text-secondary hover:bg-primary/20 flex items-center justify-center w-9 h-9 rounded-full",
 };
 
 export default function ConversationHeader() {
