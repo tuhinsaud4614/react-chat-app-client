@@ -18,3 +18,5 @@ export default function AvatarText({ children, className, ...rest }: Props) {
     </strong>
   );
 }
+
+AvatarText.displayName = "Avatar.Text";

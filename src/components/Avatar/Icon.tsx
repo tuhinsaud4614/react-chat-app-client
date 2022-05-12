@@ -22,3 +22,5 @@ export default function AvatarIcon({ rootClassName, icon, ...rest }: Props) {
     </div>
   );
 }
+
+AvatarIcon.displayName = "Avatar.Icon";
