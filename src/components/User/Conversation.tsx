@@ -1,6 +1,5 @@
-import { useState } from "react";
-import SearchBox from "../SearchBox";
 import ConversationHeader from "./ConversationHeader";
+import ConversationSearch from "./ConversationSearch";
 
 const className = {
   root: "w-full flex flex-col h-screen",
@@ -10,26 +9,11 @@ const className = {
 };
 
 export default function Conversation() {
-  const [state, setState] = useState("");
-  console.log("Con", state);
-
   return (
     <div className={className.root}>
       <ConversationHeader />
-      <SearchBox classes={{ root: className.searchBox }}>
-        <SearchBox.Input
-          classes={{ root: className.searchInputRoot }}
-          onChange={(e) => {
-            setState(e.target.value);
-          }}
-        />
-        <SearchBox.Result classes={{ root: className.searchResult }}>
-          <ul>
-            <li>{state}</li>
-          </ul>
-        </SearchBox.Result>
-      </SearchBox>
-      <div className="bg-red-200 basis-full overflow-x-hidden overflow-x-auto">
+      <ConversationSearch />
+      <div className="bg-red-200 basis-full overflow-x-hidden">
         <div className="h-[200vh]">g</div>
       </div>
     </div>

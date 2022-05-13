@@ -18,19 +18,14 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   };
 }
 
-const SearchInput: React.FC<Props> = ({
-  classes,
-  onBlur,
-  onFocus,
-  ...rest
-}) => {
+const SearchInput = ({ classes, onBlur, onFocus, ...rest }: Props) => {
   const { visible, onVisible, inputRef } = React.useContext(SearchBoxContext);
   const [focus, setFocus] = React.useState(false);
 
   const focusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocus(true);
-    onVisible && onVisible(true);
     onFocus && onFocus(e);
+    onVisible && onVisible(true);
   };
 
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -38,7 +33,7 @@ const SearchInput: React.FC<Props> = ({
     onBlur && onBlur(e);
   };
 
-  console.log("Input Render");
+  console.log("input render");
 
   return (
     <div className={classNames(className.wrapper, classes?.wrapper)}>
