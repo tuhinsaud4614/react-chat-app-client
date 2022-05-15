@@ -1,5 +1,10 @@
 import classNames from "classnames";
-import { InputHTMLAttributes, ReactNode, useState } from "react";
+import {
+  InputHTMLAttributes,
+  ReactNode,
+  TextareaHTMLAttributes,
+  useState,
+} from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TiInfoOutline } from "react-icons/ti";
 
@@ -13,7 +18,11 @@ const className = {
   error: "mt-2 text-xs text-red-500",
 };
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+type InputType =
+  | TextareaHTMLAttributes<HTMLTextAreaElement>
+  | InputHTMLAttributes<HTMLInputElement>;
+
+interface Props {
   error?: ReactNode;
   touched?: boolean;
   classes?: {
@@ -23,18 +32,44 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     show?: string;
     error?: string;
   };
+  multiline?: boolean;
 }
 
 export default function Input({
   className: cls,
-  type,
   error,
   touched = false,
   classes,
   value,
+  multiline = false,
   ...rest
-}: Props) {
+}: Props & InputType) {
   const [show, setShow] = useState(false);
+  let icon;
+
+  if (
+    !multiline &&
+    (rest as InputHTMLAttributes<HTMLInputElement>).type === "password" &&
+    value
+  ) {
+    icon = (
+      <button
+        onClick={() => setShow((prev) => !prev)}
+        type="button"
+        className={className.show}
+      >
+        {show ? (
+          <FaEye className={className.showIcon} size={20} />
+        ) : (
+          <FaEyeSlash className={className.showIcon} size={20} />
+        )}
+      </button>
+    );
+  } else {
+    icon = touched && error && (
+      <TiInfoOutline className="text-red-500 ml-1.5" size={20} />
+    );
+  }
 
   return (
     <div className={classNames(className.root, classes?.root)}>
@@ -45,28 +80,20 @@ export default function Input({
           touched && error ? "border-red-500" : "border-[#dddfe2]"
         )}
       >
-        <input
-          {...rest}
-          className={classNames(cls, classes?.formInput, className.formInput)}
-          type={type === "password" ? (show ? "text" : "password") : type}
-          value={value}
-        />
-        {type === "password" && value ? (
-          <button
-            onClick={() => setShow((prev) => !prev)}
-            type="button"
-            className={className.show}
-          >
-            {show ? (
-              <FaEye className={className.showIcon} size={20} />
-            ) : (
-              <FaEyeSlash className={className.showIcon} size={20} />
-            )}
-          </button>
+        {multiline ? (
+          <textarea
+            {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
+            className={classNames(cls, classes?.formInput, className.formInput)}
+            value={value}
+          />
         ) : (
-          touched &&
-          error && <TiInfoOutline className="text-red-500 ml-1.5" size={20} />
+          <input
+            {...(rest as InputHTMLAttributes<HTMLInputElement>)}
+            className={classNames(cls, classes?.formInput, className.formInput)}
+            value={value}
+          />
         )}
+        {icon}
       </div>
       {touched && error && (
         <div className={classNames(className.error, classes?.error)}>

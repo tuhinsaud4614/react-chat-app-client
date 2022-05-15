@@ -1,4 +1,5 @@
 import * as React from "react";
+import ListTile from "../ListTile";
 import SearchBox from "../SearchBox";
 
 const className = {
@@ -26,7 +27,11 @@ function SearchAction() {
       />
       <SearchBox.Result classes={{ root: className.result }}>
         <ul className={className.items}>
-          <li>{state}</li>
+          <li>
+            <ListTile>
+              <ListTile.Leading>{state}</ListTile.Leading>
+            </ListTile>
+          </li>
         </ul>
       </SearchBox.Result>
     </React.Fragment>

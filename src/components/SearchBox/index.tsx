@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
-import { splitJSXChild } from "../../utils";
+import useSplitElement from "../../hooks/useSplitElement";
 import SearchContextProvider from "./context";
 import SearchInput from "./Input";
 import SearchResult from "./Result";
@@ -14,28 +14,15 @@ interface Props extends React.ComponentPropsWithRef<"div"> {
 }
 
 const SearchBoxComponent = ({ classes, children, ...rest }: Props) => {
-  const { childNavigate, childRest } = React.useMemo(() => {
-    let temp: { childNavigate: any; childRest: any[] } = {
-      childNavigate: null,
-      childRest: [],
-    };
-    React.Children.toArray(children).forEach((child) => {
-      console.log("ok");
+  const { restComponents, searchNavigate } = useSplitElement(children, {
+    searchNavigate: SearchNavigate,
+  });
 
-      const item = splitJSXChild(child, SearchNavigate);
-      if (item) {
-        temp.childNavigate = item;
-      } else {
-        temp.childRest.push(child);
-      }
-    });
-    return temp;
-  }, [children]);
   return (
     <div {...rest} className={classes?.root}>
-      {childNavigate}
+      {searchNavigate}
       <section className={classNames("relative", classes?.action)}>
-        <SearchContextProvider>{childRest}</SearchContextProvider>
+        <SearchContextProvider>{restComponents}</SearchContextProvider>
       </section>
     </div>
   );
