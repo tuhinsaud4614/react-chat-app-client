@@ -1,5 +1,6 @@
 import lodash from "lodash";
 import * as React from "react";
+import { IUser } from "./interfaces";
 
 export function instanceOf<T>(obj: any, checkerKey: keyof T): obj is T {
   return checkerKey in obj;
@@ -37,4 +38,12 @@ export function randomStringGenerate(
       }
       return result;
   }
+}
+
+export function getUserName(
+  user: Pick<IUser, "email" | "firstName" | "lastName">
+) {
+  return user.firstName || user.lastName
+    ? `${user.firstName} ${user.lastName}`.trim()
+    : user.email.split("@")[0];
 }

@@ -1,4 +1,4 @@
-import { Conversation } from "../../../components/User";
+import Conversation from "../../../components/User/Conversation";
 
 const className = {
   root: "flex flex-wrap",

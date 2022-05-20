@@ -97,7 +97,7 @@ export const demoImage: IExtendedImage = {
 };
 
 export const demoUsers: IUser[] = Array.from<unknown, IUser>(
-  { length: 6 },
+  { length: 8 },
   (_, i) => ({
     avatar: i % 2 !== 0 ? demoImage : null,
     email: `${nanoid(6)}@gmail.com`,

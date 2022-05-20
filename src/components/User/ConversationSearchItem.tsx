@@ -1,7 +1,6 @@
-import { BiUser } from "react-icons/bi";
-import { useRipple } from "../../hooks";
+import { useAvatar, useRipple } from "../../hooks";
+import { getUserName } from "../../utils";
 import { IUser } from "../../utils/interfaces";
-import Avatar from "../Avatar";
 import ListTile from "../ListTile";
 
 const className = {
@@ -21,27 +20,17 @@ interface Props {
 }
 
 export default function ConversationSearchItem({ user, onClick }: Props) {
-  let leading = (
-    <Avatar.Icon icon={BiUser} size={24} rootClassName={className.avatarText} />
-  );
-
   const { mouseEvent } = useRipple({ className: "bg-primary/30" });
 
-  if (user.avatar) {
-    leading = <Avatar image={user.avatar} rootClassName={className.avatar} />;
-  } else if (user.firstName) {
-    leading = (
-      <Avatar.Text className={className.avatarText}>
-        {user.firstName[0]}
-      </Avatar.Text>
-    );
-  } else if (user.lastName) {
-    leading = (
-      <Avatar.Text className={className.avatarText}>
-        {user.lastName[0]}
-      </Avatar.Text>
-    );
-  }
+  const avatar = useAvatar({
+    user,
+    className: {
+      text: className.avatarText,
+      icon: className.avatarText,
+      main: className.avatar,
+    },
+  });
+
   return (
     <li
       className={className.root}
@@ -55,17 +44,11 @@ export default function ConversationSearchItem({ user, onClick }: Props) {
         classes={{ main: className.tileTitles }}
       >
         <ListTile.Leading className={className.leading}>
-          {leading}
+          {avatar}
         </ListTile.Leading>
-        {user.firstName || user.lastName ? (
-          <ListTile.Title className={className.tileTitle}>
-            {user.firstName} {user.lastName}
-          </ListTile.Title>
-        ) : (
-          <ListTile.Title className={className.tileTitle}>
-            {user.email.split("@")[0]}
-          </ListTile.Title>
-        )}
+        <ListTile.Title className={className.tileTitle}>
+          {getUserName(user)}
+        </ListTile.Title>
       </ListTile>
     </li>
   );

@@ -7,8 +7,9 @@ const className = {
   root: "px-4 pb-2.5",
   action: "hidden sm:block",
   input: "flex items-center bg-[#868e991a] w-full rounded-3xl h-9",
-  result: "w-full h-[80vh] rounded-md bg-white shadow-mine-2",
-  items: "list-none m-0 p-2.5",
+  result:
+    "w-full min-h-[40vh] max-h-[70vh] overflow-y-auto rounded-md bg-white shadow-mine-2",
+  items: "list-none h-full m-0 p-2.5",
 };
 
 function SearchAction() {
