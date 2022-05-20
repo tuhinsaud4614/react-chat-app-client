@@ -22,12 +22,23 @@ module.exports = {
       },
       animation: {
         ripple: "ripple 600ms linear",
+        "infinite-ripple": "infinite-ripple 1.2s infinite ease-in-out",
       },
       keyframes: {
         ripple: {
           to: {
             transform: "scale(4)",
             opacity: "0",
+          },
+        },
+        "infinite-ripple": {
+          "0%": {
+            transform: "scale(0.8)",
+            opacity: 1,
+          },
+          "100%": {
+            transform: "scale(2.4)",
+            opacity: 0,
           },
         },
       },

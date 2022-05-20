@@ -2,6 +2,7 @@ import classNames from "classnames";
 import useAvatar from "../../hooks/useAvatar";
 import { getUserName } from "../../utils";
 import { IUser } from "../../utils/interfaces";
+import Badge from "../Badge";
 
 const className = {
   root: "flex flex-col justify-between items-center p-2 max-w-[90px] max-h-[5.5rem]",
@@ -28,7 +29,7 @@ export default function ActiveFriend({ user }: Props) {
   });
   return (
     <li className={className.root}>
-      {avatar}
+      <Badge>{avatar}</Badge>
       <strong className={className.title}>{getUserName(user)}</strong>
     </li>
   );
