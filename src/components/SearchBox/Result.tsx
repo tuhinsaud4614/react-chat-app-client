@@ -3,7 +3,7 @@ import * as React from "react";
 import { SearchBoxContext } from "./context";
 
 const className = {
-  root: "absolute top-9 left-0 right-40",
+  root: "absolute top-10 left-0 right-40",
 };
 
 interface Props extends React.ComponentPropsWithoutRef<"div"> {

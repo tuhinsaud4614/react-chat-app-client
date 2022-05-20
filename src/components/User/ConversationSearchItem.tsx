@@ -1,4 +1,4 @@
-import { BiUserCircle } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
 import { useRipple } from "../../hooks";
 import { IUser } from "../../utils/interfaces";
 import Avatar from "../Avatar";
@@ -21,7 +21,9 @@ interface Props {
 }
 
 export default function ConversationSearchItem({ user, onClick }: Props) {
-  let leading = <Avatar.Icon icon={BiUserCircle} />;
+  let leading = (
+    <Avatar.Icon icon={BiUser} size={24} rootClassName={className.avatarText} />
+  );
 
   const { mouseEvent } = useRipple({ className: "bg-primary/30" });
 

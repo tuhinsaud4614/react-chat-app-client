@@ -7,7 +7,7 @@ const className = {
   root: "px-4 pb-2.5",
   action: "hidden sm:block",
   input: "flex items-center bg-[#868e991a] w-full rounded-3xl h-9",
-  result: "w-full h-[80vh] rounded-md bg-white",
+  result: "w-full h-[80vh] rounded-md bg-white shadow-mine-2",
   items: "list-none m-0 p-2.5",
 };
 
