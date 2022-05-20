@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
-import useSplitElement from "../../hooks/useSplitElement";
+import { useSplitElement } from "../../hooks";
 import SearchContextProvider from "./context";
 import SearchInput from "./Input";
 import SearchResult from "./Result";

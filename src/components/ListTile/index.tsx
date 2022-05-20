@@ -1,15 +1,13 @@
 import * as React from "react";
-import useSplitElement from "../../hooks/useSplitElement";
+import { useSplitElement } from "../../hooks";
 import Leading from "./Leading";
 import Subtitle from "./Subtitle";
 import Tailing from "./Tailing";
 import Title from "./Title";
 
-interface Props {
-  children?: React.ReactNode;
-}
+interface Props extends React.ComponentPropsWithRef<"div"> {}
 
-const Root = ({ children }: Props) => {
+const Root = ({ children, ...rest }: Props) => {
   const { leading, subtitle, tailing, title } = useSplitElement(children, {
     leading: Leading,
     subtitle: Subtitle,
@@ -18,7 +16,7 @@ const Root = ({ children }: Props) => {
   });
 
   return (
-    <div>
+    <div {...rest}>
       {leading}
       {title ||
         (subtitle && (

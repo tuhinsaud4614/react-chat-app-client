@@ -33,8 +33,6 @@ const SearchInput = ({ classes, onBlur, onFocus, ...rest }: Props) => {
     onBlur && onBlur(e);
   };
 
-  console.log("input render");
-
   return (
     <div className={classNames(className.wrapper, classes?.wrapper)}>
       {visible && (

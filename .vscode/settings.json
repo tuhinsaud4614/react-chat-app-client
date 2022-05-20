@@ -7,5 +7,15 @@
     "source.fixAll.tslint": true,
     "source.organizeImports": true
   },
-  "cSpell.words": ["Formik", "Horiz", "semibold", "Swiper", "Unfollow", "webp"]
+  "cSpell.words": [
+    "Formik",
+    "Horiz",
+    "Roboto",
+    "Segoe",
+    "semibold",
+    "Swiper",
+    "tailwindcss",
+    "Unfollow",
+    "webp"
+  ]
 }

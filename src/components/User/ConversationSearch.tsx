@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRipple } from "../../hooks";
 import ListTile from "../ListTile";
 import SearchBox from "../SearchBox";
 
@@ -12,7 +13,8 @@ const className = {
 
 function SearchAction() {
   const [state, setState] = React.useState<string>("");
-  console.log("Con", state);
+  // console.log("Con", state);
+  const { mouseEvent } = useRipple();
   return (
     <React.Fragment>
       <SearchBox.Input
@@ -28,7 +30,12 @@ function SearchAction() {
       <SearchBox.Result classes={{ root: className.result }}>
         <ul className={className.items}>
           <li>
-            <ListTile>
+            <ListTile
+              onClick={(e) => {
+                mouseEvent(e);
+              }}
+              className="rounded bg-indigo-500"
+            >
               <ListTile.Leading>{state}</ListTile.Leading>
             </ListTile>
           </li>
