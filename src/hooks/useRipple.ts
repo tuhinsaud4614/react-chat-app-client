@@ -27,8 +27,11 @@ export default function useRipple(props?: Props) {
     circle.style.left = `${e.clientX - x - radius}px`;
     circle.style.top = `${e.clientY - y - radius}px`;
     circle.style.transform = `scale(0)`;
-    circle.style.backgroundColor =
-      props?.rippleColor || "rgba(255, 255, 255, 0.50)";
+    if (props?.rippleColor) {
+      circle.style.backgroundColor = props.rippleColor;
+    } else {
+      circle.classList.add("bg-white/50");
+    }
 
     circle.classList.add("animate-ripple");
     if (props?.className) {

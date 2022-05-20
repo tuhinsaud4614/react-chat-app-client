@@ -1,5 +1,4 @@
 import * as React from "react";
-import { createContext } from "react";
 
 interface ContextProps {
   onVisible?(value: boolean): void;
@@ -8,7 +7,7 @@ interface ContextProps {
   inputRef?: React.RefObject<HTMLDivElement>;
 }
 
-export const SearchBoxContext = createContext<ContextProps>({
+export const SearchBoxContext = React.createContext<ContextProps>({
   visible: false,
 });
 

@@ -1,11 +1,7 @@
 import * as React from "react";
 
-interface Props {
-  children?: React.ReactNode;
-}
-
-export default function Leading({ children }: Props) {
-  return <div>{children}</div>;
+export default function Leading(props: React.ComponentPropsWithRef<"div">) {
+  return <div {...props} />;
 }
 
 Leading.displayName = "ListTile.Leading";

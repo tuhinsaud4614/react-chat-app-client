@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid";
+import { randomStringGenerate } from ".";
 import image1080Jpeg from "../assets/demo-images/image-1080w.jpeg";
 import image1080Web from "../assets/demo-images/image-1080w.webp";
 import image1200Jpeg from "../assets/demo-images/image-1200w.jpeg";
@@ -16,7 +18,8 @@ import image828Jpeg from "../assets/demo-images/image-828w.jpeg";
 import image828Web from "../assets/demo-images/image-828w.webp";
 import imageJpeg from "../assets/demo-images/image.jpeg";
 import imageWeb from "../assets/demo-images/image.webp";
-import { IExtendedImage } from "./interfaces";
+import { UserRole } from "./enums";
+import { IExtendedImage, IUser } from "./interfaces";
 
 export const demoImage: IExtendedImage = {
   "1200": {
@@ -92,3 +95,15 @@ export const demoImage: IExtendedImage = {
     webpName: "demon-image.webp",
   },
 };
+
+export const demoUsers: IUser[] = Array.from<unknown, IUser>(
+  { length: 4 },
+  (_, i) => ({
+    avatar: i % 2 !== 0 ? demoImage : null,
+    email: `${nanoid(6)}@gmail.com`,
+    firstName: i % 2 === 0 ? randomStringGenerate() : null,
+    id: nanoid(6),
+    lastName: i % 2 === 0 ? randomStringGenerate() : null,
+    role: UserRole.user,
+  })
+);

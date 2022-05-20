@@ -13,7 +13,7 @@ interface Props extends React.ComponentPropsWithRef<"div"> {
   };
 }
 
-const SearchBoxComponent = ({ classes, children, ...rest }: Props) => {
+export const SearchBoxComponent = ({ classes, children, ...rest }: Props) => {
   const { restComponents, searchNavigate } = useSplitElement(children, {
     searchNavigate: SearchNavigate,
   });
