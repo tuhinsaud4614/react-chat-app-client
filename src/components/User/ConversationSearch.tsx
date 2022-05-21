@@ -8,7 +8,7 @@ const className = {
   action: "hidden sm:block",
   input: "flex items-center bg-[#868e991a] w-full rounded-3xl h-9",
   result:
-    "w-full min-h-[40vh] max-h-[70vh] overflow-y-auto rounded-md bg-white shadow-mine-2",
+    "z-50 w-full min-h-[40vh] max-h-[70vh] overflow-y-auto rounded-md bg-white shadow-mine-2",
   items: "list-none h-full m-0 p-2.5",
 };
 

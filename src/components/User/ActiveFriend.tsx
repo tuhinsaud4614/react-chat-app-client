@@ -15,11 +15,12 @@ const className = {
     "line-clamp-2 text-center mt-1.5 text-zinc-600 capitalize max-w-[calc(6.5em-1rem)] leading-tight",
 };
 
-interface Props {
+interface Props
+  extends Omit<React.ComponentPropsWithRef<"li">, "children" | "className"> {
   user: IUser;
 }
 
-export default function ActiveFriend({ user }: Props) {
+export default function ActiveFriend({ user, ...rest }: Props) {
   const avatar = useAvatar({
     user: user,
     className: {
@@ -29,14 +30,8 @@ export default function ActiveFriend({ user }: Props) {
     },
   });
   return (
-    <li className={className.root}>
-      <Badge
-        className={className.badge}
-        classes={{ root: "bg-red-500 after:border-red-500" }}
-        content="99+"
-        variant="dot"
-        ripple
-      >
+    <li {...rest} className={className.root}>
+      <Badge className={className.badge} variant="dot" ripple>
         {avatar}
       </Badge>
       <strong className={className.title}>{getUserName(user)}</strong>

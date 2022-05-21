@@ -1,7 +1,7 @@
 import Conversation from "../../../components/User/Conversation";
 
 const className = {
-  root: "flex flex-wrap",
+  root: "flex flex-wrap bg-zinc-50",
   left: "w-full sm:max-w-xs",
   main: "max-w-full",
 };

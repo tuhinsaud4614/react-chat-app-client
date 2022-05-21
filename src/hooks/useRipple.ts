@@ -35,7 +35,9 @@ export default function useRipple(props?: Props) {
 
     circle.classList.add("animate-ripple");
     if (props?.className) {
-      circle.classList.add(props?.className);
+      const clsLi = props?.className?.replace(/\s+/g, " ").trim().split(" ");
+
+      circle.classList.add(...clsLi);
     }
 
     const ripple = currEle.querySelector(`[data-id=${rippleId}]`);

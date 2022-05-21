@@ -47,3 +47,6 @@ export function getUserName(
     ? `${user.firstName} ${user.lastName}`.trim()
     : user.email.split("@")[0];
 }
+
+export const removeAllSpacesFromText = (value: string) =>
+  value.replace(/\s+/g, "");

@@ -1,9 +1,11 @@
 import ActiveFriends from "./ActiveFriends";
 import ConversationHeader from "./ConversationHeader";
+import ConversationItems from "./ConversationItems";
 import ConversationSearch from "./ConversationSearch";
 
 const className = {
   root: "w-full flex flex-col h-screen",
+  items: "basis-full overflow-x-hidden",
 };
 
 export default function Conversation() {
@@ -12,8 +14,8 @@ export default function Conversation() {
       <ConversationHeader />
       <ConversationSearch />
       <ActiveFriends />
-      <div className="bg-red-200 basis-full overflow-x-hidden">
-        <div className="h-[200vh]">g</div>
+      <div className={className.items}>
+        <ConversationItems />
       </div>
     </aside>
   );
