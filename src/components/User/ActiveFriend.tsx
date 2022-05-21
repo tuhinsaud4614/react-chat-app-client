@@ -5,13 +5,14 @@ import { IUser } from "../../utils/interfaces";
 import Badge from "../Badge";
 
 const className = {
-  root: "flex flex-col justify-between items-center p-2 max-w-[90px] max-h-[5.5rem]",
-  avatar: "w-10 h-10 rounded-full overflow-hidden shrink-0 flex-grow",
-  common:
-    "w-10 h-10 border-2 border-secondary text-secondary rounded-full shrink-0 flex-grow",
+  root: "flex flex-col justify-start items-center p-2 max-w-[6.5em] max-h-[8em] text-sm cursor-pointer",
+  badge: "h-10",
+  avatar: "w-10 h-10 rounded-full overflow-hidden",
+  common: "w-10 h-10 border-2 border-secondary text-secondary rounded-full",
   text: "text-xl uppercase",
   icon: "text-2xl",
-  title: "line-clamp-2 text-center text-sm mt-2 text-zinc-700 capitalize",
+  title:
+    "line-clamp-2 text-center mt-1.5 text-zinc-600 capitalize max-w-[calc(6.5em-1rem)] leading-tight",
 };
 
 interface Props {
@@ -29,7 +30,15 @@ export default function ActiveFriend({ user }: Props) {
   });
   return (
     <li className={className.root}>
-      <Badge>{avatar}</Badge>
+      <Badge
+        className={className.badge}
+        classes={{ root: "bg-red-500 after:border-red-500" }}
+        content="99+"
+        variant="dot"
+        ripple
+      >
+        {avatar}
+      </Badge>
       <strong className={className.title}>{getUserName(user)}</strong>
     </li>
   );
