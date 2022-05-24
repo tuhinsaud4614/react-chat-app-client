@@ -17,7 +17,7 @@ const className = {
   tileTitles: "p-2.5",
   tileTitle: "line-clamp-1 text-sm font-medium text-zinc-700 capitalize",
   titleSubtitle: "mt-1 flex items-start text-xs text-zinc-500",
-  tailing: "pl-2",
+  tailing: "px-2",
   menuBtn:
     "hidden group-hover:flex items-center justify-center w-8 h-8 bg-zinc-50 rounded-full absolute z-10 right-9 top-1/2 -translate-y-1/2 shadow-mine-2 active:shadow-none",
 };
