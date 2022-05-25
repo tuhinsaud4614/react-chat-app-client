@@ -9,18 +9,22 @@ interface Props
   rootClassName?: string;
 }
 
-export default function AvatarIcon({ rootClassName, icon, ...rest }: Props) {
-  const Icon = icon;
-  return (
-    <div
-      className={classNames(
-        "flex items-center justify-center overflow-hidden select-none",
-        rootClassName
-      )}
-    >
-      <Icon {...rest} />
-    </div>
-  );
-}
+const AvatarIcon = React.forwardRef<HTMLDivElement, Props>(
+  ({ rootClassName, icon, ...rest }, ref) => {
+    const Icon = icon;
+    return (
+      <div
+        ref={ref}
+        className={classNames(
+          "flex items-center justify-center overflow-hidden select-none",
+          rootClassName
+        )}
+      >
+        <Icon {...rest} />
+      </div>
+    );
+  }
+);
 
 AvatarIcon.displayName = "Avatar.Icon";
+export default AvatarIcon;

@@ -95,3 +95,8 @@ export interface IFriendship {
   _id: string;
   __v?: string;
 }
+
+export interface IAnchorOrigin {
+  horizontal?: "center" | "right" | "left";
+  vertical?: "bottom" | "top";
+}

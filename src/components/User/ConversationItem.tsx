@@ -1,11 +1,12 @@
+import * as React from "react";
 import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
-import { HiDotsHorizontal } from "react-icons/hi";
 import { useAvatar, useRipple } from "../../hooks";
 import { getUserName } from "../../utils";
 import { IUser } from "../../utils/interfaces";
 import Avatar from "../Avatar";
 import Badge from "../Badge";
 import ListTile from "../ListTile";
+import ConversationItemMenu from "./ConversationItemMenu";
 
 const className = {
   root: "cursor-pointer group rounded-lg relative",
@@ -18,8 +19,6 @@ const className = {
   tileTitle: "line-clamp-1 text-sm font-medium text-zinc-700 capitalize",
   titleSubtitle: "mt-1 flex items-start text-xs text-zinc-500",
   tailing: "px-2",
-  menuBtn:
-    "hidden group-hover:flex items-center justify-center w-8 h-8 bg-zinc-50 rounded-full absolute z-10 right-9 top-1/2 -translate-y-1/2 shadow-mine-2 active:shadow-none",
 };
 
 interface Props {
@@ -35,17 +34,14 @@ export default function ConversationItem({ user }: Props) {
       main: className.avatar,
     },
   });
+
   const { mouseEvent } = useRipple({
     className: "bg-primary/20",
   });
+
   return (
     <li className={className.root}>
-      <Avatar.Icon
-        icon={HiDotsHorizontal}
-        size={20}
-        className="text-[#bcc0c4]"
-        rootClassName={className.menuBtn}
-      />
+      <ConversationItemMenu userId={user.id} />
       <ListTile
         className={className.tile}
         classes={{ main: className.tileTitles }}

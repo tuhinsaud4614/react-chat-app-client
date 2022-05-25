@@ -28,3 +28,5 @@ export default function ConversationItems() {
     </div>
   );
 }
+
+ConversationItems.displayName = "Conversation.Items";
