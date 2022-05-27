@@ -1,6 +1,6 @@
 import { useRipple } from "../../hooks";
 import { demoUsers } from "../../utils/demo-data";
-import RecentSearchItem from "./RecentSearchItem";
+import VerticalUserTile from "../VerticalUserTile";
 
 const className = {
   root: "px-4 py-2.5",
@@ -31,7 +31,7 @@ export default function RecentSearch() {
       </section>
       <ul className={className.items}>
         {demoUsers.map((user) => (
-          <RecentSearchItem key={user.id} user={user} />
+          <VerticalUserTile key={user.id} user={user} />
         ))}
       </ul>
     </div>

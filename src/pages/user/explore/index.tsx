@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import {
   ExploreHeader,
   ExploreRecentSearch,
+  ExploreResult,
   ExploreSuggestion,
 } from "../../../components/Explore";
 import { useMediaquery } from "../../../hooks";
@@ -30,8 +31,14 @@ export default function Explorer() {
         }}
       />
       <main className={className.container}>
-        <ExploreRecentSearch />
-        <ExploreSuggestion />
+        {state ? (
+          <ExploreResult />
+        ) : (
+          <React.Fragment>
+            <ExploreRecentSearch />
+            <ExploreSuggestion />
+          </React.Fragment>
+        )}
       </main>
     </section>
   );
