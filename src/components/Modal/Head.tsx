@@ -25,6 +25,7 @@ export default function Head({ closeIcon, classes, children, ...rest }: Props) {
         <button
           onClick={onHide}
           className={classNames(className.btn, classes?.closeBtn)}
+          aria-label="Modal-Close"
         >
           <BiX size={24} />
         </button>
