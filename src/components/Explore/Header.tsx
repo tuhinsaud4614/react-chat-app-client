@@ -20,6 +20,7 @@ export default function Header({ ...rest }: Props) {
       <button
         type="button"
         className={className.back}
+        aria-label="Back to home"
         onClick={(e) => {
           mouseEvent(e);
           navigate(-1);

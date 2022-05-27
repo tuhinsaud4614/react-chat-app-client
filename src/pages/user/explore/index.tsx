@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import {
   ExploreHeader,
   ExploreRecentSearch,
+  ExploreSuggestion,
 } from "../../../components/Explore";
 import { useMediaquery } from "../../../hooks";
 import USER_PATHS from "../routes";
@@ -30,6 +31,7 @@ export default function Explorer() {
       />
       <main className={className.container}>
         <ExploreRecentSearch />
+        <ExploreSuggestion />
       </main>
     </section>
   );

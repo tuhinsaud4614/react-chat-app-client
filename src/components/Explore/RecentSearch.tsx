@@ -21,6 +21,7 @@ export default function RecentSearch() {
         <button
           className={className.headerBtn}
           type="button"
+          aria-label="Edit recent search"
           onClick={(e) => {
             mouseEvent(e);
           }}
