@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import USER_PATHS from "../../pages/user/routes";
 import { demoUsers } from "../../utils/demo-data";
 import SearchBox, { useSearchBox } from "../SearchBox";
 import ConversationSearchItem from "./ConversationSearchItem";
@@ -47,9 +49,15 @@ function SearchAction() {
 }
 
 export default function ConversationSearch() {
+  const navigate = useNavigate();
   return (
     <SearchBox classes={{ root: className.root, action: className.action }}>
-      <SearchBox.Navigate className="sm:hidden" />
+      <SearchBox.Navigate
+        className="sm:hidden"
+        onClick={() => {
+          navigate(USER_PATHS.explore);
+        }}
+      />
       <SearchAction />
     </SearchBox>
   );
