@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import * as React from "react";
 import { useSplitElement } from "../../hooks";
+import { PolymorphicPropsWithRef, PolymorphicRef } from "../../utils/types";
 import Leading from "./Leading";
 import Skelton from "./Skelton";
 import Subtitle from "./Subtitle";
@@ -12,34 +13,49 @@ const className = {
   main: "flex-grow min-w-0 flex flex-col justify-center",
 };
 
-interface Props extends React.ComponentPropsWithRef<"div"> {
-  classes?: {
-    root?: string;
-    main?: string;
-  };
-}
+type Props<T extends React.ElementType> = PolymorphicPropsWithRef<
+  T,
+  {
+    classes?: {
+      root?: string;
+      main?: string;
+    };
+  }
+>;
 
-const Root = ({ children, className: cls, classes, ...rest }: Props) => {
-  const { leading, subtitle, tailing, title } = useSplitElement(children, {
-    leading: Leading,
-    subtitle: Subtitle,
-    title: Title,
-    tailing: Tailing,
-  });
+const Root: (<T extends React.ElementType = "div">(
+  props: Props<T>
+) => React.ReactElement | null) & { displayName?: string } = React.forwardRef(
+  <T extends React.ElementType = "div">(
+    { classes, as, children, ...rest }: Props<T>,
+    ref?: PolymorphicRef<T>
+  ) => {
+    const Component = as || "div";
+    const { leading, subtitle, tailing, title } = useSplitElement(children, {
+      leading: Leading,
+      subtitle: Subtitle,
+      title: Title,
+      tailing: Tailing,
+    });
 
-  return (
-    <div {...rest} className={classNames(className.root, classes?.root, cls)}>
-      {leading}
-      {(title || subtitle) && (
-        <div className={classNames(className.main, classes?.main)}>
-          {title}
-          {subtitle}
-        </div>
-      )}
-      {tailing}
-    </div>
-  );
-};
+    return (
+      <Component
+        {...rest}
+        ref={ref}
+        className={classNames(className.root, classes?.root, rest?.className)}
+      >
+        {leading}
+        {(title || subtitle) && (
+          <div className={classNames(className.main, classes?.main)}>
+            {title}
+            {subtitle}
+          </div>
+        )}
+        {tailing}
+      </Component>
+    );
+  }
+);
 
 Root.displayName = "ListTile";
 const ListTile = Object.assign(Root, {

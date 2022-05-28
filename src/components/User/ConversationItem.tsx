@@ -68,7 +68,7 @@ export default function ConversationItem({ user }: Props) {
       <ListTile
         className={className.tile}
         classes={{ main: className.tileTitles }}
-        onClick={(e) => {
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
           mouseEvent(e);
         }}
       >

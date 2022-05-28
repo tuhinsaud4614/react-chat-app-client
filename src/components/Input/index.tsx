@@ -1,10 +1,5 @@
 import classNames from "classnames";
-import {
-  InputHTMLAttributes,
-  ReactNode,
-  TextareaHTMLAttributes,
-  useState,
-} from "react";
+import * as React from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TiInfoOutline } from "react-icons/ti";
 
@@ -19,11 +14,11 @@ const className = {
 };
 
 type InputType =
-  | TextareaHTMLAttributes<HTMLTextAreaElement>
-  | InputHTMLAttributes<HTMLInputElement>;
+  | React.TextareaHTMLAttributes<HTMLTextAreaElement>
+  | React.InputHTMLAttributes<HTMLInputElement>;
 
 interface Props {
-  error?: ReactNode;
+  error?: React.ReactNode;
   touched?: boolean;
   classes?: {
     root?: string;
@@ -44,12 +39,12 @@ export default function Input({
   multiline = false,
   ...rest
 }: Props & InputType) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = React.useState(false);
   let icon;
 
   if (
     !multiline &&
-    (rest as InputHTMLAttributes<HTMLInputElement>).type === "password" &&
+    (rest as React.InputHTMLAttributes<HTMLInputElement>).type === "password" &&
     value
   ) {
     icon = (
@@ -82,13 +77,13 @@ export default function Input({
       >
         {multiline ? (
           <textarea
-            {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
+            {...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
             className={classNames(cls, classes?.formInput, className.formInput)}
             value={value}
           />
         ) : (
           <input
-            {...(rest as InputHTMLAttributes<HTMLInputElement>)}
+            {...(rest as React.InputHTMLAttributes<HTMLInputElement>)}
             className={classNames(cls, classes?.formInput, className.formInput)}
             value={value}
           />
