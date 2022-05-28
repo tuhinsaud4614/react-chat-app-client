@@ -1,3 +1,4 @@
+import { motion, Variants } from "framer-motion";
 import * as React from "react";
 import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
 import { useAvatar, useRipple } from "../../hooks";
@@ -21,6 +22,22 @@ const className = {
   tailing: "px-2",
 };
 
+const variants: Variants = {
+  offscreen: {
+    opacity: 0,
+    y: 50,
+  },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
 interface Props {
   user: IUser;
 }
@@ -40,8 +57,14 @@ export default function ConversationItem({ user }: Props) {
   });
 
   return (
-    <li className={className.root}>
-      <ConversationItemMenu userId={user.id} />
+    <motion.li
+      variants={variants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.5 }}
+      className={className.root}
+    >
+      <ConversationItemMenu key={user.id} userId={user.id} />
       <ListTile
         className={className.tile}
         classes={{ main: className.tileTitles }}
@@ -70,6 +93,6 @@ export default function ConversationItem({ user }: Props) {
           />
         </ListTile.Tailing>
       </ListTile>
-    </li>
+    </motion.li>
   );
 }

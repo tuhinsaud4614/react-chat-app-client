@@ -5,7 +5,6 @@ export default function useTouchable() {
 
   React.useEffect(() => {
     const handleSize = (e?: UIEvent) => {
-      console.log("useTouchable");
       setTouchable(
         typeof window !== "undefined" &&
           ("ontouchstart" in window || Boolean(window.navigator.maxTouchPoints))

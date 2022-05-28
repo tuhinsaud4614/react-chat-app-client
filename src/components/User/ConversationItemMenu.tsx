@@ -20,7 +20,7 @@ interface Props {
 }
 
 const ConversationItemMenu = ({ userId }: Props) => {
-  const [anchorEle, setAnchorEle] = React.useState<null | SVGElement>(null);
+  const [anchorEle, setAnchorEle] = React.useState<null | HTMLDivElement>(null);
   const touchable = useTouchable();
 
   React.useEffect(() => {
@@ -97,8 +97,10 @@ const ConversationItemMenu = ({ userId }: Props) => {
             className.menuBtn,
             Boolean(anchorEle) && "!flex"
           )}
-          onClick={(event: React.MouseEvent<SVGElement>) => {
-            setAnchorEle(event.currentTarget);
+          rootProps={{
+            onClick(event: React.MouseEvent<HTMLDivElement>) {
+              setAnchorEle(event.currentTarget);
+            },
           }}
         />
       )}

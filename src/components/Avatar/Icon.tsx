@@ -7,13 +7,15 @@ interface Props
     IconBaseProps {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   rootClassName?: string;
+  rootProps?: Omit<React.HTMLAttributes<HTMLDivElement>, "children">;
 }
 
 const AvatarIcon = React.forwardRef<HTMLDivElement, Props>(
-  ({ rootClassName, icon, ...rest }, ref) => {
+  ({ rootClassName, icon, rootProps, ...rest }, ref) => {
     const Icon = icon;
     return (
       <div
+        {...rootProps}
         ref={ref}
         className={classNames(
           "flex items-center justify-center overflow-hidden select-none",

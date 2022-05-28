@@ -1,7 +1,30 @@
 import classNames from "classnames";
+import { motion, Variants } from "framer-motion";
 import * as React from "react";
 import { IAnchorOrigin } from "../../utils/interfaces";
 import Portal from "../Portal";
+
+const variants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 16,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 25,
+      stiffness: 500,
+    },
+  },
+  exit: {
+    y: 16,
+    opacity: 0,
+  },
+};
+
 const ARROW_SIZE = 14;
 
 const getPositions = (
@@ -128,8 +151,12 @@ const MenuComponent = ({
           className={classNames("fixed z-[900] inset-0", classes?.backdrop)}
         />
       )}
-      <section
+      <motion.section
         ref={ref}
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
         className={classNames(
           "fixed z-[910] bg-white shadow-mine-2 rounded-md",
           classes?.root
@@ -140,7 +167,16 @@ const MenuComponent = ({
         }}
       >
         {!hideArrow && (
-          <span
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: {
+                duration: 0.1,
+                delay: 0.5,
+              },
+            }}
+            exit={{ opacity: 0 }}
             className={classNames(
               "fixed block bg-white transform rotate-45 shadow-mine-2 w-3.5 h-3.5",
               classes?.arrow
@@ -159,7 +195,7 @@ const MenuComponent = ({
         >
           {children}
         </div>
-      </section>
+      </motion.section>
     </Portal>
   );
 };
