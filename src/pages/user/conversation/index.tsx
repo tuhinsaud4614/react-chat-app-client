@@ -11,7 +11,7 @@ export const ConversationPageRoute = "/c/:conversationId";
 // constant styles
 const className = {
   backBtn:
-    "text-secondary hover:bg-primary/20 flex items-center justify-center p-1 rounded-full mr-2",
+    "text-secondary hover:bg-primary/20 flex items-center justify-center p-1 rounded-full",
 };
 
 export default function Conversation() {
