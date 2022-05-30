@@ -8,6 +8,9 @@ const className = {
   main: "flex-grow shrink border-l",
 };
 
+// Static path for this page
+export const HomePageRoute = "/";
+
 export default function Home() {
   const matches = useMediaQuery("(min-width: 640px)");
   return (
@@ -17,9 +20,11 @@ export default function Home() {
       </div>
       {matches && (
         <div className={className.main}>
-          <ChatBox />
+          <ChatBox conversationId="1" />
         </div>
       )}
     </section>
   );
 }
+
+Home.displayName = "Home.Page";

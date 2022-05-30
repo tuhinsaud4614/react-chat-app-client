@@ -20,6 +20,10 @@ module.exports = {
         primary: "#50baec",
         secondary: "#145c81",
       },
+      screens: {
+        md1: "960px",
+        // => @media (min-width: 960px) { ... }
+      },
       animation: {
         ripple: "ripple 600ms linear",
         "infinite-ripple": "infinite-ripple 1.2s infinite ease-in-out",

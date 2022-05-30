@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import USER_PATHS from "../../../pages/user/routes";
+import { ExplorePageRoute } from "../../../pages/user/explore";
 import { demoUsers } from "../../../utils/demo-data";
 import SearchBox, { useSearchBox } from "../../SearchBox";
 import ConversationSearchItem from "./ConversationSearchItem";
@@ -55,7 +55,7 @@ export default function ConversationSearch() {
       <SearchBox.Navigate
         className="sm:hidden"
         onClick={() => {
-          navigate(USER_PATHS.explore);
+          navigate(ExplorePageRoute);
         }}
       />
       <SearchAction />

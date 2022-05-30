@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import * as React from "react";
 import { useSplitElement } from "../../hooks";
+import Backdrop from "../Backdrop";
 import Portal from "../Portal";
 import Body from "./Body";
 import ModalContext from "./context";
@@ -9,19 +10,9 @@ import Foot from "./Foot";
 import Head from "./Head";
 
 const className = {
-  backdrop: "fixed z-[900] inset-0 bg-gray-500 bg-opacity-75",
   center: "flex items-center justify-center",
   container:
     "flex flex-col bg-white shadow-mine-2 rounded-2xl max-h-[calc(100%-32px)] w-full sm:max-w-[calc(640px-32px)] m-4 sm:mx-auto overflow-x-hidden",
-};
-
-const backdropVariants: Variants = {
-  start: {
-    opacity: 0,
-  },
-  end: {
-    opacity: 1,
-  },
 };
 
 const containerVariants: Variants = {
@@ -75,15 +66,10 @@ function ModalComponent({
     <Portal>
       <AnimatePresence exitBeforeEnter>
         {open && (
-          <motion.div
+          <Backdrop
             role="dialog"
-            variants={backdropVariants}
-            initial="start"
-            animate="end"
-            exit="start"
             onClick={!staticBack ? onHide : undefined}
             className={classNames(
-              className.backdrop,
               center && className.center,
               !staticBack && "cursor-pointer",
               classes?.backdrop
@@ -103,7 +89,7 @@ function ModalComponent({
                 {foot}
               </motion.div>
             </ModalContext.Provider>
-          </motion.div>
+          </Backdrop>
         )}
       </AnimatePresence>
     </Portal>
