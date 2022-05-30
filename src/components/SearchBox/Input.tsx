@@ -38,6 +38,7 @@ const SearchInput = ({ classes, onBlur, onFocus, ...rest }: Props) => {
       {visible && (
         <button
           type="button"
+          aria-label="Focus out from search box"
           className={classNames(className.back, classes?.backBtn)}
           onClick={() => {
             onVisible && onVisible(false);

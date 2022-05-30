@@ -1,7 +1,7 @@
 import { BsPeopleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { demoImage } from "../../utils/demo-data";
-import Avatar from "../Avatar";
+import { demoImage } from "../../../utils/demo-data";
+import Avatar from "../../Avatar";
 
 const className = {
   root: "flex items-center justify-between px-4 py-2.5 w-full",

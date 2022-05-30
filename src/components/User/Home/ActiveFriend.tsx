@@ -1,4 +1,6 @@
-import VerticalUserTile, { VerticalUserTileProps } from "../VerticalUserTile";
+import VerticalUserTile, {
+  VerticalUserTileProps,
+} from "../../VerticalUserTile";
 
 export default function ActiveFriend({ user, ...rest }: VerticalUserTileProps) {
   return (

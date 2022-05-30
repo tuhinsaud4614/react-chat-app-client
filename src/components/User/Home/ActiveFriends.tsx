@@ -1,4 +1,4 @@
-import { demoUsers } from "../../utils/demo-data";
+import { demoUsers } from "../../../utils/demo-data";
 import ActiveFriend from "./ActiveFriend";
 
 const className = {

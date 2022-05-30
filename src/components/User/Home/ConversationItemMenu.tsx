@@ -2,10 +2,10 @@ import classNames from "classnames";
 import * as React from "react";
 import { BiBell, BiTrash, BiUser } from "react-icons/bi";
 import { HiDotsHorizontal } from "react-icons/hi";
-import { useTouchable } from "../../hooks";
-import Avatar from "../Avatar";
-import ListTile from "../ListTile";
-import Menu from "../Menu";
+import { useTouchable } from "../../../hooks";
+import Avatar from "../../Avatar";
+import ListTile from "../../ListTile";
+import Menu from "../../Menu";
 
 const className = {
   menuBtn:

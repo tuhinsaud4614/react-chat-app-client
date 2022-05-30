@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import USER_PATHS from "../../pages/user/routes";
-import { demoUsers } from "../../utils/demo-data";
-import SearchBox, { useSearchBox } from "../SearchBox";
+import USER_PATHS from "../../../pages/user/routes";
+import { demoUsers } from "../../../utils/demo-data";
+import SearchBox, { useSearchBox } from "../../SearchBox";
 import ConversationSearchItem from "./ConversationSearchItem";
 
 const className = {

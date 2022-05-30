@@ -1,12 +1,12 @@
 import { motion, Variants } from "framer-motion";
 import * as React from "react";
 import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
-import { useAvatar, useRipple } from "../../hooks";
-import { getUserName } from "../../utils";
-import { IUser } from "../../utils/interfaces";
-import Avatar from "../Avatar";
-import Badge from "../Badge";
-import ListTile from "../ListTile";
+import { useAvatar, useRipple } from "../../../hooks";
+import { getUserName } from "../../../utils";
+import { IUser } from "../../../utils/interfaces";
+import Avatar from "../../Avatar";
+import Badge from "../../Badge";
+import ListTile from "../../ListTile";
 import ConversationItemMenu from "./ConversationItemMenu";
 
 const className = {

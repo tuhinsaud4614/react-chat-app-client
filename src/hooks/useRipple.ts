@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import * as React from "react";
 
 interface Props {
@@ -7,7 +6,7 @@ interface Props {
 }
 
 export default function useRipple(props?: Props) {
-  const rippleId = `ripple-${nanoid(4)}`;
+  const rippleId = "ripple-7f02d6";
   const mouseEventHandler = <T extends HTMLElement>(e: React.MouseEvent<T>) => {
     const currEle = e.currentTarget;
     currEle.style.position = "relative";
