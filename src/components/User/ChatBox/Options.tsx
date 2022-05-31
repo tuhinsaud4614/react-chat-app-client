@@ -35,7 +35,7 @@ export default function Options({ onClose }: Props) {
   const matches = useMediaQuery("(min-width: 960px)");
   return (
     <React.Fragment>
-      {!matches && <Backdrop onClick={onClose} />}
+      {!matches && <Backdrop className="z-[800]" onClick={onClose} />}
       <motion.aside
         variants={variants}
         initial="hidden"

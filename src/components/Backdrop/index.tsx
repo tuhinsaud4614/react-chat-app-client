@@ -22,7 +22,7 @@ export default function Backdrop({ className, ...rest }: Props) {
       animate="end"
       exit="start"
       className={classNames(
-        "fixed z-[900] inset-0 bg-gray-500 bg-opacity-75",
+        "fixed inset-0 bg-gray-500 bg-opacity-75",
         className
       )}
     />

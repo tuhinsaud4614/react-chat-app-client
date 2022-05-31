@@ -12,7 +12,8 @@ import Head from "./Head";
 const className = {
   center: "flex items-center justify-center",
   container:
-    "flex flex-col bg-white shadow-mine-2 rounded-2xl max-h-[calc(100%-32px)] w-full sm:max-w-[calc(640px-32px)] m-4 sm:mx-auto overflow-x-hidden",
+    "cursor-default flex flex-col bg-white shadow-mine-2 rounded-2xl max-h-[calc(100%-32px)] w-full sm:max-w-[calc(640px-32px)] m-4 sm:mx-auto overflow-x-hidden",
+  content: "h-[inherit] w-[inherit] max-h-[inherit] max-w-[inherit] bg-inherit",
 };
 
 const containerVariants: Variants = {
@@ -44,7 +45,6 @@ interface Props {
   };
   onHide(): void;
   open: boolean;
-  scroll?: boolean;
   staticBack?: boolean;
   children?: React.ReactNode;
 }
@@ -70,6 +70,7 @@ function ModalComponent({
             role="dialog"
             onClick={!staticBack ? onHide : undefined}
             className={classNames(
+              "z-[910]",
               center && className.center,
               !staticBack && "cursor-pointer",
               classes?.backdrop
