@@ -54,4 +54,4 @@ export default function Options({ onClose }: Props) {
   );
 }
 
-Options.displayName = "ChatBox.Options";
+Options.displayName = "Options";

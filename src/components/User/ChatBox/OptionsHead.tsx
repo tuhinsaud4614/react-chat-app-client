@@ -12,7 +12,7 @@ const className = {
   text: "text-xl uppercase",
   icon: "text-2xl",
   userNameBtn:
-    "px-2 py-1.5 font-semibold text-secondary hover:bg-primary/10 rounded-md uppercase line-clamp-1",
+    "px-2 py-1.5 font-semibold text-secondary hover:bg-primary/10 rounded-md capitalize line-clamp-1",
   status: "text-xs text-zinc-500 leading-4 inline-block px-4",
 };
 

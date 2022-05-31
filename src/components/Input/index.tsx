@@ -10,6 +10,9 @@ const className = {
     "outline-0 shadow-none text-lg bg-transparent text-neutral-800 basis-full min-w-0 focus:placeholder:text-[#dddfe2]",
   show: "outline-0 shadow-none border-0 bg-transparent ml-1.5",
   showIcon: "text-[#7f7f7f] cursor-pointer",
+  lengthBar: "relative self-start",
+  lengthBarText:
+    "absolute top-0 right-0 -mt-[0.8em] -mr-[0.8em] text-xs text-neutral-500",
   error: "mt-2 text-xs text-red-500",
 };
 
@@ -89,6 +92,13 @@ export default function Input({
           />
         )}
         {icon}
+        {rest.maxLength && (
+          <span className={className.lengthBar}>
+            <span className={className.lengthBarText}>
+              {value?.toString().length}/{rest.maxLength}
+            </span>
+          </span>
+        )}
       </div>
       {touched && error && (
         <div className={classNames(className.error, classes?.error)}>

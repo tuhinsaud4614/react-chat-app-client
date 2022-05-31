@@ -1,4 +1,5 @@
 import * as React from "react";
+import CustomizeChat from "./CustomizeChat";
 
 const className = {
   root: "py-4",
@@ -9,7 +10,11 @@ interface Props {
 }
 
 export default function OptionsContent({ conversationId }: Props) {
-  return <section className={className.root}>content</section>;
+  return (
+    <section className={className.root}>
+      <CustomizeChat />
+    </section>
+  );
 }
 
-OptionsContent.displayName = "ChatBox.Options.Content";
+OptionsContent.displayName = "Options.Content";

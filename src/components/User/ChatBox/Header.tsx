@@ -16,7 +16,7 @@ const className = {
   avatarText:
     "w-10 h-10 border-2 border-secondary text-secondary text-xl uppercase rounded-full",
   tileTitles: "pl-2.5 text-left",
-  tileTitle: "text-neutral-700 line-clamp-1 font-semibold",
+  tileTitle: "text-neutral-700 line-clamp-1 font-semibold capitalize",
   titleSubtitle: "text-xs text-zinc-500",
   actions: "ml-2.5",
   actionMore:
