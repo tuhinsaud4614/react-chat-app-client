@@ -10,19 +10,19 @@ import Foot from "./Foot";
 import Head from "./Head";
 
 const className = {
-  center: "flex items-center justify-center",
   container:
-    "cursor-default flex flex-col bg-white shadow-mine-2 rounded-2xl max-h-[calc(100%-32px)] w-full sm:max-w-[calc(640px-32px)] m-4 sm:mx-auto overflow-x-hidden",
-  content: "h-[inherit] w-[inherit] max-h-[inherit] max-w-[inherit] bg-inherit",
+    "fixed z-[911] top-1/2 left-1/2 max-h-[calc(100vh-32px)] w-[calc(100%-32px)] sm:max-w-[calc(640px-32px)] flex flex-col bg-white shadow-mine-2 rounded-2xl overflow-hidden",
 };
 
 const containerVariants: Variants = {
   hidden: {
     y: "-100vh",
+    x: "-50%",
     opacity: 0,
   },
   visible: {
-    y: "0",
+    y: "-50%",
+    x: "-50%",
     opacity: 1,
     transition: {
       duration: 0.1,
@@ -38,7 +38,6 @@ const containerVariants: Variants = {
 };
 
 interface Props {
-  center?: boolean;
   classes?: {
     backdrop?: string;
     container?: string;
@@ -51,7 +50,6 @@ interface Props {
 
 function ModalComponent({
   onHide,
-  center = true,
   open,
   staticBack,
   classes,
@@ -64,33 +62,34 @@ function ModalComponent({
   });
   return (
     <Portal>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence>
         {open && (
           <Backdrop
             role="dialog"
             onClick={!staticBack ? onHide : undefined}
             className={classNames(
               "z-[910]",
-              center && className.center,
               !staticBack && "cursor-pointer",
               classes?.backdrop
             )}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className={classNames(className.container, classes?.container)}
           >
             <ModalContext.Provider value={{ onHide: onHide }}>
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                onClick={(e) => e.stopPropagation()}
-                className={classNames(className.container, classes?.container)}
-              >
-                {head}
-                {body}
-                {foot}
-              </motion.div>
+              {head}
+              {body}
+              {foot}
             </ModalContext.Provider>
-          </Backdrop>
+          </motion.div>
         )}
       </AnimatePresence>
     </Portal>
