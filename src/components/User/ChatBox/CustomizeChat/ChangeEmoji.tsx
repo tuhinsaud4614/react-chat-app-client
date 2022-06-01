@@ -9,14 +9,20 @@ const className = {
   content: "max-h-[372px]",
 };
 
-export default function ChangeEmoji() {
-  const [open, setOpen] = React.useState(false);
+const ControlEmoji = () => {
   const [value, setValue] = React.useState("");
 
   const changeHandler = React.useCallback((value: string) => {
     setValue(value);
   }, []);
   console.log(value);
+  return (
+    <EmojiBox onChange={changeHandler} classes={{ root: "max-h-[371px]" }} />
+  );
+};
+
+export default function ChangeEmoji() {
+  const [open, setOpen] = React.useState(false);
 
   return (
     <React.Fragment>
@@ -29,10 +35,7 @@ export default function ChangeEmoji() {
           <h3 className={className.title}>Emoji</h3>
         </Modal.Head>
         <Modal.Body>
-          <EmojiBox
-            onChange={changeHandler}
-            classes={{ root: "max-h-[371px]" }}
-          />
+          <ControlEmoji />
         </Modal.Body>
       </Modal>
       <OptionsItem icon={BiLike} onClick={() => setOpen(true)}>
