@@ -148,7 +148,7 @@ const MenuComponent = ({
       {!!onClose && (
         <div
           onClick={onClose}
-          className={classNames("fixed z-[900] inset-0", classes?.backdrop)}
+          className={classNames("fixed z-[950] inset-0", classes?.backdrop)}
         />
       )}
       <motion.section
@@ -158,7 +158,7 @@ const MenuComponent = ({
         animate="visible"
         exit="exit"
         className={classNames(
-          "fixed z-[910] bg-white shadow-mine-2 rounded-md",
+          "fixed z-[951] bg-white shadow-mine-2 rounded-md",
           classes?.root
         )}
         style={{
