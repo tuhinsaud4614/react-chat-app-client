@@ -1,8 +1,7 @@
 import * as React from "react";
-import { BiLike } from "react-icons/bi";
-import OptionsItem from "../OptionsItem";
 import OptionsItems from "../OptionsItems";
 import ChangeChatName from "./ChangeChatName";
+import ChangeEmoji from "./ChangeEmoji";
 import ChangePhoto from "./ChangePhoto";
 import EditNickNames from "./EditNicknames";
 
@@ -13,7 +12,7 @@ export default function CustomizeChat() {
     <OptionsItems title="Customize chat">
       <ChangeChatName />
       <ChangePhoto />
-      <OptionsItem icon={BiLike}>Change emoji</OptionsItem>
+      <ChangeEmoji />
       <EditNickNames />
     </OptionsItems>
   );

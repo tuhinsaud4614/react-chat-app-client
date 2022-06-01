@@ -65,7 +65,6 @@ function ModalComponent({
       <AnimatePresence>
         {open && (
           <Backdrop
-            role="dialog"
             onClick={!staticBack ? onHide : undefined}
             className={classNames(
               "z-[910]",
@@ -78,6 +77,7 @@ function ModalComponent({
       <AnimatePresence>
         {open && (
           <motion.div
+            role="dialog"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
