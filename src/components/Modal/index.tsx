@@ -16,23 +16,23 @@ const className = {
 
 const containerVariants: Variants = {
   hidden: {
-    y: "-100vh",
+    y: "-50%",
     x: "-50%",
+    scale: 1.2,
     opacity: 0,
   },
   visible: {
     y: "-50%",
     x: "-50%",
     opacity: 1,
+    scale: 1,
     transition: {
       duration: 0.1,
-      type: "spring",
-      damping: 25,
-      stiffness: 500,
+      easings: "easeOut",
     },
   },
   exit: {
-    y: "100vh",
+    scale: 1.2,
     opacity: 0,
   },
 };

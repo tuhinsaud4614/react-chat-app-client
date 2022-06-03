@@ -25,10 +25,21 @@ module.exports = {
         // => @media (min-width: 960px) { ... }
       },
       animation: {
+        tooltip: "tooltip .1s ease-out",
         ripple: "ripple 600ms linear",
         "infinite-ripple": "infinite-ripple 1.2s infinite ease-in-out",
       },
       keyframes: {
+        tooltip: {
+          "0%": {
+            opacity: "0",
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
         ripple: {
           to: {
             transform: "scale(4)",

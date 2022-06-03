@@ -1,10 +1,11 @@
 import classNames from "classnames";
 import * as React from "react";
 import { emojis, Refs } from ".";
+import { useRipple } from "../../hooks";
 
 const className = {
-  items: "flex items-center justify-center border-t h-[33px]",
-  item: "h-8 w-8 flex items-center justify-center cursor-pointer",
+  items: "flex items-center justify-center border-t pt-1.5",
+  item: "h-8 w-8 hover:bg-primary/10 rounded-full flex items-center justify-center cursor-pointer",
 };
 
 interface Props {
@@ -12,12 +13,12 @@ interface Props {
 }
 
 const TabsComponent = ({ refs }: Props) => {
-  console.log("tabs");
-
   const objects = Object.keys(emojis) as Array<keyof typeof emojis>;
   const [active, setActive] = React.useState<keyof typeof emojis>(
     () => objects[0]
   );
+
+  const { mouseEvent } = useRipple({ className: "bg-primary/30" });
 
   return (
     <ul className={className.items}>
@@ -26,11 +27,12 @@ const TabsComponent = ({ refs }: Props) => {
           <button
             className={classNames(
               className.item,
-              key === active && "text-secondary"
+              key === active && "text-red-600 bg-primary/10"
             )}
             type="button"
             aria-label={key}
-            onClick={() => {
+            onClick={(e) => {
+              mouseEvent(e);
               refs[key].current?.scrollIntoView({ behavior: "smooth" });
               setActive(key);
             }}

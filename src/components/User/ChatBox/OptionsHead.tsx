@@ -3,6 +3,7 @@ import * as React from "react";
 import { useAvatar, useRipple } from "../../../hooks";
 import { getUserName } from "../../../utils";
 import { IUser } from "../../../utils/interfaces";
+import UserProfiler from "./OptionsHeadProfiler";
 
 const className = {
   root: "flex flex-col items-center",
@@ -20,23 +21,9 @@ interface Props {
   user: IUser;
 }
 
-const UserNameBtn = ({ user }: Props) => {
-  const { mouseEvent } = useRipple({ className: "bg-primary/30" });
-  return (
-    <button
-      aria-label="User Info"
-      type="button"
-      className={className.userNameBtn}
-      onClick={(e) => {
-        mouseEvent(e);
-      }}
-    >
-      {getUserName(user)}
-    </button>
-  );
-};
-
 export default function OptionsHead({ user }: Props) {
+  const [open, setOpen] = React.useState(false);
+  const { mouseEvent } = useRipple({ className: "bg-primary/30" });
   const avatar = useAvatar({
     user: user,
     className: {
@@ -48,7 +35,18 @@ export default function OptionsHead({ user }: Props) {
   return (
     <header className={className.root}>
       <div className={className.avatarRoot}>{avatar}</div>
-      <UserNameBtn user={user} />
+      <button
+        aria-label="User Info"
+        type="button"
+        className={className.userNameBtn}
+        onClick={(e) => {
+          mouseEvent(e);
+          setOpen(true);
+        }}
+      >
+        {getUserName(user)}
+      </button>
+      <UserProfiler open={open} onClose={() => setOpen(false)} user={user} />
       <span className={className.status}>
         Active {true ? "now" : "10m ago"}
       </span>

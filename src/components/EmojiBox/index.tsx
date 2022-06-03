@@ -1434,7 +1434,7 @@ export const emojis = {
 const className = {
   root: "flex flex-col p-4",
   container: "w-full flex-grow shrink overflow-y-auto overflow-x-hidden",
-  title: "p-2 text-sm font-semibold text-silver capitalize",
+  title: "p-2 text-sm text-neutral-700 font-semibold text-silver capitalize",
   emojis: "flex flex-wrap justify-center",
   emoji:
     "h-[1.5625rem] w-[1.5625rem] text-[1.5625rem] flex items-center justify-center m-2",

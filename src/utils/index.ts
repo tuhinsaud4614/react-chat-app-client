@@ -1,6 +1,58 @@
 import lodash from "lodash";
 import * as React from "react";
-import { IUser } from "./interfaces";
+import { IAnchorOrigin, IUser } from "./interfaces";
+
+const ARROW_SIZE = 14;
+export const getPositions = (
+  anchorRect: DOMRect | null,
+  selfRect: DOMRect | null,
+  anchorOrigin: IAnchorOrigin,
+  fraction?: boolean | number,
+  hideArrow?: boolean
+) => {
+  let selfLeft = 0;
+  let selfTop = 0;
+  let arrowLeft = 0;
+  let arrowTop = 0;
+  let FRACTION = 0;
+
+  if (anchorOrigin.horizontal === "right" && typeof fraction !== "undefined") {
+    FRACTION = typeof fraction === "boolean" ? 0.89 : fraction;
+  } else if (
+    anchorOrigin.horizontal === "left" &&
+    typeof fraction !== "undefined"
+  ) {
+    FRACTION = typeof fraction === "boolean" ? 0.11 : fraction;
+  }
+
+  if (anchorRect) {
+    const selfWidth = selfRect ? selfRect.width : 0;
+    const selfHeight = selfRect ? selfRect.height : 0;
+    selfLeft = anchorRect.left - selfWidth * FRACTION;
+    selfTop = hideArrow ? anchorRect.bottom : anchorRect.bottom + ARROW_SIZE;
+
+    arrowLeft = anchorRect.left + (anchorRect.width / 2 - ARROW_SIZE / 2);
+    arrowTop = anchorRect.bottom + ARROW_SIZE / 2;
+
+    if (anchorOrigin.horizontal === "center") {
+      selfLeft = anchorRect.left - (selfWidth - anchorRect.width) / 2;
+    } else if (anchorOrigin.horizontal === "right") {
+      selfLeft = anchorRect.right - selfWidth * FRACTION;
+    }
+
+    if (anchorOrigin.vertical === "top") {
+      selfTop = anchorRect.top - selfHeight - (hideArrow ? 0 : ARROW_SIZE);
+      arrowTop = anchorRect.top - ARROW_SIZE * 1.5;
+    }
+  }
+
+  return {
+    selfLeft,
+    selfTop,
+    arrowLeft,
+    arrowTop,
+  };
+};
 
 export function instanceOf<T>(obj: any, checkerKey: keyof T): obj is T {
   return checkerKey in obj;
@@ -50,3 +102,7 @@ export function getUserName(
 
 export const removeAllSpacesFromText = (value: string) =>
   value.replace(/\s+/g, "");
+
+export const splitClassName = (className?: string) => {
+  return className?.replace(/\s+/g, " ").trim().split(" ");
+};
