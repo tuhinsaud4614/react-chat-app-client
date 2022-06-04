@@ -5,7 +5,6 @@ import { CgUnblock } from "react-icons/cg";
 import { FaBell, FaBellSlash } from "react-icons/fa";
 import { useRipple, useTooltip } from "../../../hooks";
 import { getUserName } from "../../../utils";
-import { demoImage } from "../../../utils/demo-data";
 import { IUser } from "../../../utils/interfaces";
 import Modal from "../../Modal";
 import Picture from "../../Picture";
@@ -14,8 +13,9 @@ const className = {
   title: "text-neutral-700 font-semibold flex-grow text-center",
   container:
     "flex flex-col justify-center sm:flex-row sm:items-center sm:justify-start",
-  image: "sm:w-1/2 border-8 rounded-2xl overflow-hidden",
-  content: "flex flex-col items-center sm:items-start p-4",
+  image: "sm:w-1/2 sm:max-w-xs border-8 rounded-2xl overflow-hidden",
+  content:
+    "flex flex-col items-center sm:items-start sm:flex-grow pt-4 sm:pl-4 sm:pt-0",
   name: "text-lg text-secondary font-semibold flex items-center",
   status:
     "inline-block ml-2 px-1.5 py-1 bg-green-200 text-xs rounded-md text-neutral-700",
@@ -41,7 +41,7 @@ export default function UserProfiler({ open, onClose, user }: Props) {
     <Modal
       onHide={onClose}
       open={open}
-      classes={{ container: "!max-w-sm sm:!max-w-[608px]" }}
+      classes={{ container: "!max-w-sm sm:!max-w-[520px]" }}
     >
       <Modal.Head closeIcon>
         <h3 className={className.title}>Profile</h3>
@@ -54,8 +54,8 @@ export default function UserProfiler({ open, onClose, user }: Props) {
               user.avatar && "flex items-center justify-center"
             )}
           >
-            {!user.avatar ? (
-              <Picture image={user.avatar || demoImage} />
+            {user.avatar ? (
+              <Picture image={user.avatar} />
             ) : (
               <BiUser size={150} className="text-gray-500" />
             )}

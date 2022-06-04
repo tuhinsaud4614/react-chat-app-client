@@ -21,3 +21,4 @@ export type PolymorphicPropsWithRef<
 > = PolymorphicProps<T, Props> & { ref?: PolymorphicRef<T> };
 
 export type AttachmentType = "DOCUMENT" | "AUDIO" | "VIDEO";
+export type MediaType = "IMAGES" | "VIDEOS" | "DOCUMENTS";

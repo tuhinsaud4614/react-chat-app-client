@@ -1,25 +1,12 @@
 import classNames from "classnames";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import * as React from "react";
 import useMediaQuery from "../../../hooks/useMediaQuery";
+import { sidebarVariants } from "../../../utils/constants";
 import { demoUsers } from "../../../utils/demo-data";
 import Backdrop from "../../Backdrop";
 import OptionsContent from "./OptionsContent";
 import OptionsHead from "./OptionsHead";
-
-const variants: Variants = {
-  hidden: {
-    x: "100%",
-    opacity: 0,
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      bounce: 0,
-    },
-  },
-};
 
 const className = {
   rootModal: "fixed z-[901] top-0 right-0 bottom-0 shadow-mine-2",
@@ -37,7 +24,7 @@ export default function Options({ onClose }: Props) {
     <React.Fragment>
       {!matches && <Backdrop className="z-[800]" onClick={onClose} />}
       <motion.aside
-        variants={variants}
+        variants={sidebarVariants}
         initial="hidden"
         animate="visible"
         exit="hidden"

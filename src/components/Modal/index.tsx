@@ -26,10 +26,6 @@ const containerVariants: Variants = {
     x: "-50%",
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 0.1,
-      easings: "easeOut",
-    },
   },
   exit: {
     scale: 1.2,

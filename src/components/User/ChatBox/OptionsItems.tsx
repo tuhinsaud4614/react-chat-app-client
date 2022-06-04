@@ -8,7 +8,7 @@ const className = {
     "flex items-center justify-between mx-4 p-2.5 cursor-pointer hover:bg-primary/10 rounded-2xl",
   text: "text-sm text-neutral-700 font-semibold",
   arrow: "text-secondary",
-  body: "list-none m-0",
+  body: "list-none m-0 bg-white overflow-hidden",
   item: "mx-4 p-2.5",
 };
 
@@ -17,10 +17,11 @@ interface Props {
   title: string;
 }
 
-export default function OptionsItems({ children, title }: Props) {
+const OptionsItems: React.FC<Props> = ({ children, title }) => {
   const [expended, setExpanded] = React.useState(false);
   const { mouseEvent } = useRipple({ className: "bg-primary/30" });
   const ArrowIcon = expended ? BiChevronDown : BiChevronRight;
+
   return (
     <Accordion expanded={expended}>
       <Accordion.Header
@@ -39,6 +40,8 @@ export default function OptionsItems({ children, title }: Props) {
       </Accordion.Body>
     </Accordion>
   );
-}
+};
 
 OptionsItems.displayName = "Options.Items";
+
+export default OptionsItems;

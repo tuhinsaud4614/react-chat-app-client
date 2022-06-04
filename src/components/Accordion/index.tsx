@@ -23,9 +23,14 @@ function Root({ expanded, children }: Props) {
 }
 
 Root.displayName = "Accordion";
-const Accordion = Object.assign(Root, {
-  Header: Header,
-  Body: Body,
-});
+const Accordion = Object.assign(
+  React.memo(Root, (prev, next) => {
+    return prev.expanded === next.expanded;
+  }),
+  {
+    Header: Header,
+    Body: Body,
+  }
+);
 
 export default Accordion;
