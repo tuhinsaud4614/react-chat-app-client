@@ -64,7 +64,7 @@ export default function ConversationItem({ user }: Props) {
       viewport={{ once: true, amount: 0.5 }}
       className={className.root}
     >
-      <ConversationItemMenu key={user.id} userId={user.id} />
+      <ConversationItemMenu key={user.id} user={user} />
       <ListTile
         className={className.tile}
         classes={{ main: className.tileTitles }}

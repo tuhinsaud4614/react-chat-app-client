@@ -9,11 +9,11 @@ interface Props {
 }
 
 const className =
-  "w-full fixed z-[901] top-0 right-0 bottom-0 bg-white h-screen overflow-y-auto";
+  "w-full fixed z-[901] top-0 right-0 bottom-0 bg-white h-screen flex flex-col overflow-x-hidden";
 
 export default function Container({ tab, children }: Props) {
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
       {tab && (
         <motion.section
           variants={sidebarVariants}

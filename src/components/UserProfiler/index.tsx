@@ -1,19 +1,19 @@
-import classNames from "classnames";
 import * as React from "react";
 import { BiBlock, BiUser } from "react-icons/bi";
 import { CgUnblock } from "react-icons/cg";
 import { FaBell, FaBellSlash } from "react-icons/fa";
-import { useRipple, useTooltip } from "../../../hooks";
-import { getUserName } from "../../../utils";
-import { IUser } from "../../../utils/interfaces";
-import Modal from "../../Modal";
-import Picture from "../../Picture";
+import { useRipple, useTooltip } from "../../hooks";
+import { getUserName } from "../../utils";
+import { IUser } from "../../utils/interfaces";
+import Modal from "../Modal";
+import Picture from "../Picture";
 
 const className = {
   title: "text-neutral-700 font-semibold flex-grow text-center",
   container:
     "flex flex-col justify-center sm:flex-row sm:items-center sm:justify-start",
-  image: "sm:w-1/2 sm:max-w-xs border-8 rounded-2xl overflow-hidden",
+  image:
+    "sm:w-1/2 sm:max-w-xs border-8 rounded-2xl overflow-hidden flex items-center justify-center",
   content:
     "flex flex-col items-center sm:items-start sm:flex-grow pt-4 sm:pl-4 sm:pt-0",
   name: "text-lg text-secondary font-semibold flex items-center",
@@ -34,7 +34,6 @@ interface Props {
 
 export default function UserProfiler({ open, onClose, user }: Props) {
   const { mouseEvent } = useRipple({ className: "bg-primary/30" });
-
   const { onHoverEnd, onHoverStart } = useTooltip();
 
   return (
@@ -48,12 +47,7 @@ export default function UserProfiler({ open, onClose, user }: Props) {
       </Modal.Head>
       <Modal.Body className="p-4">
         <section className={className.container}>
-          <div
-            className={classNames(
-              className.image,
-              user.avatar && "flex items-center justify-center"
-            )}
-          >
+          <div className={className.image}>
             {user.avatar ? (
               <Picture image={user.avatar} />
             ) : (

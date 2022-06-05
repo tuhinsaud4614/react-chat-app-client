@@ -3,9 +3,11 @@ import * as React from "react";
 import { BiBell, BiTrash, BiUser } from "react-icons/bi";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { useTouchable } from "../../../hooks";
+import { IUser } from "../../../utils/interfaces";
 import Avatar from "../../Avatar";
 import ListTile from "../../ListTile";
 import Menu from "../../Menu";
+import UserProfiler from "../../UserProfiler";
 
 const className = {
   menuBtn:
@@ -16,10 +18,11 @@ const className = {
 };
 
 interface Props {
-  userId: string;
+  user: IUser;
 }
 
-const ConversationItemMenu = ({ userId }: Props) => {
+const ConversationItemMenu = ({ user }: Props) => {
+  const [openProfile, setOpenProfile] = React.useState(false);
   const [anchorEle, setAnchorEle] = React.useState<null | HTMLDivElement>(null);
   const touchable = useTouchable();
 
@@ -61,6 +64,7 @@ const ConversationItemMenu = ({ userId }: Props) => {
               className={className.item}
               onClick={() => {
                 setAnchorEle(null);
+                setOpenProfile(true);
               }}
             >
               <ListTile classes={{ main: className.titles }}>
@@ -88,6 +92,11 @@ const ConversationItemMenu = ({ userId }: Props) => {
           </ul>
         </section>
       </Menu>
+      <UserProfiler
+        open={openProfile}
+        onClose={() => setOpenProfile(false)}
+        user={user}
+      />
       {!touchable && (
         <Avatar.Icon
           icon={HiDotsHorizontal}

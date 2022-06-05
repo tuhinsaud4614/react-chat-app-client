@@ -49,11 +49,8 @@ export default function Tabs({ onTab, tab }: Props) {
   return (
     <div className={className.root}>
       <ul className={className.items}>
-        {items.map((item, index) => (
-          <li
-            //   className={index < 2 ? "mr-2.5" : undefined}
-            key={item.key}
-          >
+        {items.map((item) => (
+          <li key={item.key}>
             <motion.button
               aria-label={item.name}
               type="button"

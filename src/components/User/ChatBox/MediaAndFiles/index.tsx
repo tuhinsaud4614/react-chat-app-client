@@ -5,6 +5,7 @@ import OptionsItem from "../OptionsItem";
 import OptionsItems from "../OptionsItems";
 import Container from "./Container";
 import Header from "./Header";
+import TabPanel from "./TabPanel";
 import Tabs from "./Tabs";
 
 // interface CustomizeChatProps {}
@@ -27,7 +28,8 @@ export default function MediaAndFiles() {
       </OptionsItems>
       <Container tab={tab}>
         <Header onClose={() => setTab(null)} />
-        <Tabs tab={tab} onTab={(value) => setTab(value)}></Tabs>
+        <Tabs tab={tab} onTab={(value) => setTab(value)} />
+        <TabPanel tab={tab}>{tab}</TabPanel>
       </Container>
     </React.Fragment>
   );

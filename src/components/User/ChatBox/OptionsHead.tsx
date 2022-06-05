@@ -3,7 +3,7 @@ import * as React from "react";
 import { useAvatar, useRipple } from "../../../hooks";
 import { getUserName } from "../../../utils";
 import { IUser } from "../../../utils/interfaces";
-import UserProfiler from "./OptionsHeadProfiler";
+import UserProfiler from "../../UserProfiler";
 
 const className = {
   root: "flex flex-col items-center",
