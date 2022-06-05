@@ -1,5 +1,8 @@
 export { default as useAvatar } from "./useAvatar";
+export { default as useEventListener } from "./useEventListener";
 export { default as useHover } from "./useHover";
+export { default as useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
+export { default as useLocalStorage } from "./useLocalStorage";
 export { default as useMediaquery } from "./useMediaQuery";
 export { default as useRipple } from "./useRipple";
 export { default as useSplitElement } from "./useSplitElement";

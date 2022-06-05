@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useLocalStorage } from "../../../hooks";
 import ChatBoxHeader from "./Header";
 import Options from "./Options";
 
@@ -13,7 +14,10 @@ interface Props {
 }
 
 export default function ChatBox({ backButton }: Props) {
-  const [openOptions, seOpenOptions] = React.useState(false);
+  const [openOptions, seOpenOptions] = useLocalStorage<boolean>(
+    "chatBox_options",
+    false
+  );
 
   return (
     <main className={className.root}>

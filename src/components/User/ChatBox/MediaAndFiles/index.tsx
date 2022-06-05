@@ -1,17 +1,47 @@
 import * as React from "react";
 import { BiFile, BiImage, BiVideo } from "react-icons/bi";
+import { useLocalStorage } from "../../../../hooks";
 import { MediaType } from "../../../../utils/types";
 import OptionsItem from "../OptionsItem";
 import OptionsItems from "../OptionsItems";
 import Container from "./Container";
+import MediaAndFilesContext from "./context";
+import Documents from "./Documents";
 import Header from "./Header";
+import Images from "./Images";
 import TabPanel from "./TabPanel";
 import Tabs from "./Tabs";
+import Videos from "./Videos";
 
 // interface CustomizeChatProps {}
 // export default function CustomizeChat({}: CustomizeChatProps) {
 export default function MediaAndFiles() {
-  const [tab, setTab] = React.useState<MediaType | null>(null);
+  const [tab, setTab] = useLocalStorage<MediaType | null>(
+    "chatBox_media_files_options",
+    null
+  );
+
+  const tabHandler = (value: MediaType | null) => {
+    setTab(value);
+  };
+
+  let tabPanelContent;
+
+  switch (tab) {
+    case "IMAGES":
+      tabPanelContent = <Images />;
+      break;
+    case "VIDEOS":
+      tabPanelContent = <Videos />;
+      break;
+
+    case "DOCUMENTS":
+      tabPanelContent = <Documents />;
+      break;
+    default:
+      tabPanelContent = null;
+      break;
+  }
 
   return (
     <React.Fragment>
@@ -26,11 +56,13 @@ export default function MediaAndFiles() {
           Documents
         </OptionsItem>
       </OptionsItems>
-      <Container tab={tab}>
-        <Header onClose={() => setTab(null)} />
-        <Tabs tab={tab} onTab={(value) => setTab(value)} />
-        <TabPanel tab={tab}>{tab}</TabPanel>
-      </Container>
+      <MediaAndFilesContext.Provider value={{ tab: tab, onTab: tabHandler }}>
+        <Container>
+          <Header />
+          <Tabs />
+          <TabPanel>{tabPanelContent}</TabPanel>
+        </Container>
+      </MediaAndFilesContext.Provider>
     </React.Fragment>
   );
 }

@@ -1,8 +1,10 @@
 import classNames from "classnames";
 import { AnimatePresence, motion, Variants } from "framer-motion";
+import * as React from "react";
 import { IconType } from "react-icons";
 import { BiFile, BiImage, BiVideo } from "react-icons/bi";
 import { MediaType } from "../../../../utils/types";
+import MediaAndFilesContext from "./context";
 
 const className = {
   root: "px-4 pb-2.5",
@@ -35,12 +37,8 @@ const textVariant: Variants = {
   },
 };
 
-interface Props {
-  tab: MediaType | null;
-  onTab(value: MediaType): void;
-}
-
-export default function Tabs({ onTab, tab }: Props) {
+export default function Tabs() {
+  const { tab, onTab } = React.useContext(MediaAndFilesContext);
   const items: { name: string; key: MediaType; Icon: IconType }[] = [
     { name: "images", key: "IMAGES", Icon: BiImage },
     { name: "videos", key: "VIDEOS", Icon: BiVideo },

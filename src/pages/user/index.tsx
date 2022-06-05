@@ -3,9 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import { ConversationPageRoute } from "./conversation";
 import { ExplorePageRoute } from "./explore";
 import { HomePageRoute } from "./home";
+import { ImagesPageRoute } from "./images";
 
 const HomePage = React.lazy(() => import("./home"));
 const ExplorerPage = React.lazy(() => import("./explore"));
+const ImagesPage = React.lazy(() => import("./images"));
 const ConversationPage = React.lazy(() => import("./conversation"));
 const NotFoundPage = React.lazy(() => import("./not-found"));
 
@@ -25,6 +27,14 @@ function User() {
         element={
           <React.Suspense fallback={<>...</>}>
             <ExplorerPage />
+          </React.Suspense>
+        }
+      />
+      <Route
+        path={ImagesPageRoute}
+        element={
+          <React.Suspense fallback={<>...</>}>
+            <ImagesPage />
           </React.Suspense>
         }
       />

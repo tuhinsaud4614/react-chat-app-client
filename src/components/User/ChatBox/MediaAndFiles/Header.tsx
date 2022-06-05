@@ -1,4 +1,6 @@
+import * as React from "react";
 import { BsArrowLeft } from "react-icons/bs";
+import MediaAndFilesContext from "./context";
 
 const className = {
   header: "flex items-center px-4 py-2.5 w-full",
@@ -7,18 +9,17 @@ const className = {
   title: "text-lg font-semibold text-neutral-700 ml-2.5 leading-normal",
 };
 
-interface Props {
-  onClose(): void;
-}
-
-export default function Header({ onClose }: Props) {
+export default function Header() {
+  const { onTab } = React.useContext(MediaAndFilesContext);
   return (
     <header className={className.header}>
       <button
         type="button"
         aria-label="Back to home"
         className={className.backButton}
-        onClick={onClose}
+        onClick={() => {
+          onTab(null);
+        }}
       >
         <BsArrowLeft size={24} />
       </button>
