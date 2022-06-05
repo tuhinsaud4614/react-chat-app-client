@@ -19,11 +19,11 @@ const className = {
 export default function Videos() {
   return (
     <TabContent>
-      {Array.from({ length: 10 }, () => nanoid()).map((img) => (
-        <TabContentItem key={img}>
+      {Array.from({ length: 10 }, () => nanoid()).map((video) => (
+        <TabContentItem key={video}>
           <Link
-            aria-label={`Image ${img}`}
-            to={`${MediaPageRoute}?type=video&conversationId=${img}&messageId=${img}`}
+            aria-label={`Videos ${video}`}
+            to={`${MediaPageRoute}?type=video&conversationId=${video}&messageId=${video}`}
             className={className.imageContainer}
           >
             <Picture image={demoImage} className={className.image} />
