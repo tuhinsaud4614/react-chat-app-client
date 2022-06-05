@@ -1,32 +1,31 @@
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
-import { ImagesPageRoute } from "../../../../pages/user/images";
+import { MediaPageRoute } from "../../../../pages/user/media";
 import { demoImage } from "../../../../utils/demo-data";
 import Picture from "../../../Picture";
+import TabContent from "./TabContent";
+import TabContentItem from "./TabContentItem";
 
 const className = {
-  root: "list-none m-0 grid gap-2 grid-cols-[repeat(3,_minmax(100px,_1fr))] overflow-x-hidden w-full",
-  item: "pb-[100%] relative",
-  imageContainer:
-    "absolute inset-0 rounded-md overflow-hidden focus:inset-0.5 focus:ring focus:ring-cyan-300",
+  imageContainer: "absolute inset-0.5 focus:ring focus:ring-cyan-300",
   image: "h-full w-full object-cover",
 };
 
 export default function Images() {
   return (
-    <ul className={className.root}>
+    <TabContent>
       {Array.from({ length: 10 }, () => nanoid()).map((img) => (
-        <li key={img} className={className.item}>
+        <TabContentItem key={img}>
           <Link
             aria-label={`Image ${img}`}
-            to={`${ImagesPageRoute}?conversationId=${img}&messageId=${img}`}
+            to={`${MediaPageRoute}?type=image&conversationId=${img}&messageId=${img}`}
             className={className.imageContainer}
           >
             <Picture image={demoImage} className={className.image} />
           </Link>
-        </li>
+        </TabContentItem>
       ))}
-    </ul>
+    </TabContent>
   );
 }
 
