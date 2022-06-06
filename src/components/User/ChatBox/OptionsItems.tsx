@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BiChevronDown, BiChevronRight } from "react-icons/bi";
-import { useRipple } from "../../../hooks";
+import { useLocalStorage, useRipple } from "../../../hooks";
 import Accordion from "../../Accordion";
 
 const className = {
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const OptionsItems: React.FC<Props> = ({ children, title }) => {
-  const [expended, setExpanded] = React.useState(false);
+  const [expended, setExpanded] = useLocalStorage<boolean>(title, false);
   const { mouseEvent } = useRipple({ className: "bg-primary/30" });
   const ArrowIcon = expended ? BiChevronDown : BiChevronRight;
 

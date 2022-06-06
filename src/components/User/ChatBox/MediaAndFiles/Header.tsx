@@ -6,7 +6,7 @@ const className = {
   header: "flex items-center px-4 py-2.5 w-full",
   backButton:
     "text-secondary hover:bg-primary/20 flex items-center justify-center p-1 rounded-full",
-  title: "text-lg font-semibold text-neutral-700 ml-2.5 leading-normal",
+  title: "font-semibold text-neutral-700 ml-2.5 leading-normal",
 };
 
 export default function Header() {
