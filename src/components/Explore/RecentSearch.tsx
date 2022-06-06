@@ -19,15 +19,18 @@ const EditButton = () => {
   const { mouseEvent } = useRipple({ className: "bg-primary/30" });
   const [open, setOpen] = React.useState(false);
   return (
-    <button
-      className={className.editBtn}
-      type="button"
-      aria-label="Edit recent search"
-      onClick={(e) => {
-        mouseEvent(e);
-        setOpen(true);
-      }}
-    >
+    <React.Fragment>
+      <button
+        className={className.editBtn}
+        type="button"
+        aria-label="Edit recent search"
+        onClick={(e) => {
+          mouseEvent(e);
+          setOpen(true);
+        }}
+      >
+        Edit
+      </button>
       <Modal onHide={() => setOpen(false)} open={open} staticBack>
         <Modal.Head closeIcon>
           <h3 className="text-neutral-700 font-semibold">
@@ -42,8 +45,7 @@ const EditButton = () => {
           <EditSearch />
         </Modal.Body>
       </Modal>
-      Edit
-    </button>
+    </React.Fragment>
   );
 };
 

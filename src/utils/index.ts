@@ -14,14 +14,11 @@ export const getPositions = (
   let selfTop = 0;
   let arrowLeft = 0;
   let arrowTop = 0;
-  let FRACTION = 0;
+  let FRACTION = 1;
 
-  if (anchorOrigin.horizontal === "right" && typeof fraction !== "undefined") {
+  if (anchorOrigin.horizontal === "right" && fraction) {
     FRACTION = typeof fraction === "boolean" ? 0.89 : fraction;
-  } else if (
-    anchorOrigin.horizontal === "left" &&
-    typeof fraction !== "undefined"
-  ) {
+  } else if (anchorOrigin.horizontal === "left" && fraction) {
     FRACTION = typeof fraction === "boolean" ? 0.11 : fraction;
   }
 
@@ -29,7 +26,9 @@ export const getPositions = (
     const selfWidth = selfRect ? selfRect.width : 0;
     const selfHeight = selfRect ? selfRect.height : 0;
     selfLeft = anchorRect.left - selfWidth * FRACTION;
-    selfTop = hideArrow ? anchorRect.bottom : anchorRect.bottom + ARROW_SIZE;
+    selfTop = hideArrow
+      ? anchorRect.bottom + 4
+      : anchorRect.bottom + ARROW_SIZE;
 
     arrowLeft = anchorRect.left + (anchorRect.width / 2 - ARROW_SIZE / 2);
     arrowTop = anchorRect.bottom + ARROW_SIZE / 2;
@@ -41,7 +40,7 @@ export const getPositions = (
     }
 
     if (anchorOrigin.vertical === "top") {
-      selfTop = anchorRect.top - selfHeight - (hideArrow ? 0 : ARROW_SIZE);
+      selfTop = anchorRect.top - selfHeight - (hideArrow ? 4 : ARROW_SIZE);
       arrowTop = anchorRect.top - ARROW_SIZE * 1.5;
     }
   }

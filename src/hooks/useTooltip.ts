@@ -41,13 +41,6 @@ export default function useTooltip() {
         "fixed z-[999] w-auto px-1.5 py-1 min-w-max rounded-md shadow-md text-white bg-gray-900 text-xs font-bold";
     }
 
-    if (!arrowEle.current) {
-      arrowEle.current = document.createElement("span");
-      arrowEle.current.ariaLabel = `Tooltip arrow ${text}`;
-      arrowEle.current.className =
-        "fixed block bg-gray-900 transform rotate-45 shadow-md w-3.5 h-3.5";
-    }
-
     const presentational = document.getElementById("tooltip");
     if (presentational) {
       presentational.appendChild(tooltipEle.current);
@@ -60,16 +53,23 @@ export default function useTooltip() {
       currEle.getBoundingClientRect(),
       tooltipEle.current.getBoundingClientRect(),
       anchorOrigin,
+      false,
       hideArrow
     );
 
-    tooltipEle.current.appendChild(arrowEle.current);
     tooltipEle.current.style.left = `${selfLeft}px`;
     tooltipEle.current.style.top = `${selfTop}px`;
-    arrowEle.current.style.left = `${arrowLeft}px`;
-    arrowEle.current.style.top = `${arrowTop}px`;
+    if (!arrowEle.current && !hideArrow) {
+      arrowEle.current = document.createElement("span");
+      arrowEle.current.ariaLabel = `Tooltip arrow ${text}`;
+      arrowEle.current.className =
+        "fixed block bg-gray-900 transform rotate-45 shadow-md w-3.5 h-3.5";
+      tooltipEle.current.appendChild(arrowEle.current);
+      arrowEle.current.style.left = `${arrowLeft}px`;
+      arrowEle.current.style.top = `${arrowTop}px`;
+    }
     tooltipEle.current.classList.add("animate-tooltip");
-    arrowEle.current.classList.add("animate-tooltip");
+    arrowEle.current?.classList.add("animate-tooltip");
 
     // Add extra class name
     const extraCls = splitClassName(className);
