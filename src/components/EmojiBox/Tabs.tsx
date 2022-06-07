@@ -1,29 +1,26 @@
 import classNames from "classnames";
 import * as React from "react";
-import { emojis, Refs } from ".";
+import { emojiKeys, EmojiKeyType, emojis, Refs } from ".";
 import { useRipple } from "../../hooks";
 
 const className = {
-  items: "flex items-center justify-center border-t pt-1.5",
+  items: "flex items-center justify-center flex-wrap border-t pt-1.5",
   item: "h-8 w-8 hover:bg-primary/10 rounded-full flex items-center justify-center cursor-pointer",
 };
 
 interface Props {
   refs: Refs;
+  active: EmojiKeyType;
+  onTab(id: EmojiKeyType): void;
 }
 
-const TabsComponent = ({ refs }: Props) => {
-  const objects = Object.keys(emojis) as Array<keyof typeof emojis>;
-  const [active, setActive] = React.useState<keyof typeof emojis>(
-    () => objects[0]
-  );
-
+const Tabs = ({ refs, active, onTab }: Props) => {
   const { mouseEvent } = useRipple({ className: "bg-primary/30" });
 
   return (
     <ul className={className.items}>
-      {objects.map((key) => (
-        <li key={key}>
+      {emojiKeys.map((key) => (
+        <li key={key} className="mx-0.5">
           <button
             className={classNames(
               className.item,
@@ -34,7 +31,9 @@ const TabsComponent = ({ refs }: Props) => {
             onClick={(e) => {
               mouseEvent(e);
               refs[key].current?.scrollIntoView({ behavior: "smooth" });
-              setActive(key);
+              if (key !== "Most Popular") {
+                onTab(key);
+              }
             }}
           >
             {emojis[key].labelIcon}
@@ -44,7 +43,5 @@ const TabsComponent = ({ refs }: Props) => {
     </ul>
   );
 };
-
-const Tabs = React.memo(TabsComponent);
 
 export default Tabs;

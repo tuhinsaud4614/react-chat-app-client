@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BiFile, BiImage, BiVideo } from "react-icons/bi";
 import { useLocalStorage } from "../../../../hooks";
+import { CHAT_BOX_MEDIA_FILES_OPTIONS } from "../../../../utils/constants";
 import { MediaType } from "../../../../utils/types";
 import OptionsItem from "../OptionsItem";
 import OptionsItems from "../OptionsItems";
@@ -17,7 +18,7 @@ import Videos from "./Videos";
 // export default function CustomizeChat({}: CustomizeChatProps) {
 export default function MediaAndFiles() {
   const [tab, setTab] = useLocalStorage<MediaType | null>(
-    "chatBox_media_files_options",
+    CHAT_BOX_MEDIA_FILES_OPTIONS,
     null
   );
 

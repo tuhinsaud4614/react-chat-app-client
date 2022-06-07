@@ -6,6 +6,7 @@ import { FaAppleAlt, FaUmbrellaBeach } from "react-icons/fa";
 import { FiSmile } from "react-icons/fi";
 import { IoBulbOutline, IoPawOutline } from "react-icons/io5";
 import { MdOutlineAlternateEmail } from "react-icons/md";
+import Content from "./Content";
 import Tabs from "./Tabs";
 
 export const emojis = {
@@ -1440,9 +1441,11 @@ const className = {
     "h-[1.5625rem] w-[1.5625rem] text-[1.5625rem] flex items-center justify-center m-2",
 };
 
+export type EmojiKeyType = keyof typeof emojis;
 export type Refs = {
-  [P in keyof typeof emojis]: React.RefObject<HTMLHeadingElement>;
+  [P in EmojiKeyType]: React.RefObject<HTMLHeadingElement>;
 };
+export const emojiKeys = Object.keys(emojis) as Array<EmojiKeyType>;
 
 interface Props {
   classes?: {
@@ -1455,9 +1458,11 @@ interface Props {
 }
 
 function EmojiBoxComponent({ classes, onChange }: Props) {
+  const [active, setActive] = React.useState<EmojiKeyType>(emojiKeys[1]);
+
   const refs = React.useMemo(() => {
     const obj: Refs = {} as Refs;
-    (Object.keys(emojis) as Array<keyof typeof emojis>).forEach((key) => {
+    emojiKeys.forEach((key) => {
       obj[key] = React.createRef<HTMLHeadingElement>();
     });
     return obj;
@@ -1472,25 +1477,31 @@ function EmojiBoxComponent({ classes, onChange }: Props) {
               <h3 ref={refs[key]} className={className.title}>
                 {key}
               </h3>
-              <div className={className.emojis}>
-                {emojis[key].icons.map((emoji) => (
-                  <button
-                    key={emoji}
-                    className={className.emoji}
-                    onClick={onChange ? () => onChange(emoji) : undefined}
-                  >
-                    {emoji}
-                  </button>
-                ))}
-              </div>
+              <Content
+                id={key}
+                onObserver={(id) => {
+                  setActive(id);
+                }}
+                icons={emojis[key].icons}
+                onChange={onChange}
+              />
             </React.Fragment>
           );
         })}
       </section>
-      <Tabs refs={refs} />
+      <Tabs
+        refs={refs}
+        active={active}
+        onTab={(id) => {
+          setActive(id);
+        }}
+      />
     </div>
   );
 }
 
-const EmojiBox = React.memo(EmojiBoxComponent);
+const EmojiBox = React.memo(
+  EmojiBoxComponent,
+  (prev, next) => prev.onChange === next.onChange
+);
 export default EmojiBox;

@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import { BiDownload, BiX } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 import { useTooltip } from "../../../hooks";
+import { HomePageRoute } from "../../../pages/user/home";
 import { demoImage } from "../../../utils/demo-data";
 import HeaderForwardBtn from "./HeaderForwardBtn";
 
@@ -16,6 +18,7 @@ const className = {
 
 export default function Header() {
   const { onHoverEnd, onHoverStart } = useTooltip();
+  const navigate = useNavigate();
   return (
     <header
       className={className.root}
@@ -26,6 +29,10 @@ export default function Header() {
       <button
         aria-label="Close"
         className={classNames(className.btn, className.closeBtn)}
+        type="button"
+        onClick={() => {
+          navigate(HomePageRoute);
+        }}
       >
         <BiX size={30} />
       </button>

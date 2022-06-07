@@ -1,5 +1,9 @@
 import * as React from "react";
 import { useLocalStorage } from "../../../hooks";
+import {
+  CHAT_BOX_MEDIA_FILES_OPTIONS,
+  CHAT_BOX_OPTIONS,
+} from "../../../utils/constants";
 import ChatBoxHeader from "./Header";
 import Options from "./Options";
 
@@ -15,9 +19,15 @@ interface Props {
 
 export default function ChatBox({ backButton }: Props) {
   const [openOptions, seOpenOptions] = useLocalStorage<boolean>(
-    "chatBox_options",
+    CHAT_BOX_OPTIONS,
     false
   );
+
+  React.useEffect(() => {
+    if (!openOptions) {
+      window.localStorage.removeItem(CHAT_BOX_MEDIA_FILES_OPTIONS);
+    }
+  }, [openOptions]);
 
   return (
     <main className={className.root}>

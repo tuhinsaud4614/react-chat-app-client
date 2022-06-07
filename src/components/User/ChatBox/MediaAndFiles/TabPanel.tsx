@@ -28,7 +28,7 @@ const variants: Variants = {
 export default function TabPanel({ children }: Props) {
   const { tab } = React.useContext(MediaAndFilesContext);
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence initial={false} exitBeforeEnter>
       <motion.section
         key={tab}
         variants={variants}
