@@ -2,7 +2,7 @@ import classNames from "classnames";
 import * as React from "react";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { HiDotsCircleHorizontal } from "react-icons/hi";
-import { useAvatar, useRipple } from "../../../hooks";
+import { useAvatar, useRipple, useTooltip } from "../../../hooks";
 import { getUserName } from "../../../utils";
 import { demoUsers } from "../../../utils/demo-data";
 import Badge from "../../Badge";
@@ -48,6 +48,8 @@ export default function ChatBoxHeader({
     className: "bg-primary/20",
   });
 
+  const { onHoverEnd, onHoverStart } = useTooltip();
+
   return (
     <header aria-label="Chat-Box header" className={className.root}>
       <section className={className.left}>
@@ -83,6 +85,17 @@ export default function ChatBoxHeader({
           onClick={(e) => {
             mouseEvent(e);
             onMoreClick && onMoreClick();
+          }}
+          onMouseEnter={(e) => {
+            onHoverStart(e, {
+              text: "Options",
+              className: "capitalize",
+              hideArrow: true,
+              anchorOrigin: { horizontal: "right" },
+            });
+          }}
+          onMouseLeave={(e) => {
+            onHoverEnd();
           }}
         >
           {moreOpen ? (
