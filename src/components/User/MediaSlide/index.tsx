@@ -8,7 +8,7 @@ import Slides from "./Slides";
 
 const className = {
   root: "relative h-screen w-screen",
-  content: "relative w-full h-full bg-black flex flex-col",
+  content: "relative w-full h-full bg-black flex flex-col items-center",
 };
 
 const images = Array.from({ length: 30 }, () => demoImage);
@@ -38,7 +38,7 @@ export default function MediaSlide() {
               : undefined
           }
         >
-          <Content image={demoImage} />
+          <Content image={images.length ? images[current] : demoImage} />
         </Controls>
         <Slides
           current={current}
