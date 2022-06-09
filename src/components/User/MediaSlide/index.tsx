@@ -1,5 +1,7 @@
 import * as React from "react";
-import { demoImage } from "../../../utils/demo-data";
+import { instanceOf } from "../../../utils";
+import { demoImage, demoVideo } from "../../../utils/demo-data";
+import { IVideo } from "../../../utils/interfaces";
 import Background from "./Background";
 import Content from "./Content";
 import Controls from "./Controls";
@@ -11,10 +13,22 @@ const className = {
   content: "relative w-full h-full bg-black flex flex-col items-center",
 };
 
-const images = Array.from({ length: 30 }, () => demoImage);
+const resources = Array.from({ length: 31 }, (_, i) =>
+  i % 2 === 0 ? demoImage : demoVideo
+);
 
 export default function MediaSlide() {
   const [current, setCurrent] = React.useState(0);
+
+  const images = React.useMemo(
+    () =>
+      resources.map((resource) =>
+        instanceOf<IVideo>(resource, "thumbnail")
+          ? resource.thumbnail
+          : resource
+      ),
+    []
+  );
 
   const actionHandler = (mode: "back" | "forward") => {
     if (mode === "back") {
@@ -33,12 +47,14 @@ export default function MediaSlide() {
           hideArrow={
             current === 0
               ? "back"
-              : current === images.length - 1
+              : current === resources.length - 1
               ? "forward"
               : undefined
           }
         >
-          <Content image={images.length ? images[current] : demoImage} />
+          <Content
+            resource={resources.length ? resources[current] : demoImage}
+          />
         </Controls>
         <Slides
           current={current}

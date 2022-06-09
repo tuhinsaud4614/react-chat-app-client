@@ -29,6 +29,12 @@ export interface INormalImage {
   alt: string;
 }
 
+export interface IVideo {
+  src: string;
+  thumbnail: INormalImage | IExtendedImage;
+  duration: number;
+}
+
 export interface IAttachment {
   type: AttachmentType;
   value: string;

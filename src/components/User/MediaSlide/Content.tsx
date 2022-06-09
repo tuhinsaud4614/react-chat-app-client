@@ -1,20 +1,47 @@
+import classNames from "classnames";
 import * as React from "react";
-import { IExtendedImage, INormalImage } from "../../../utils/interfaces";
+import { instanceOf } from "../../../utils";
+import {
+  IExtendedImage,
+  INormalImage,
+  IVideo,
+} from "../../../utils/interfaces";
 import Picture from "../../Picture";
+import Video from "../../Video";
 
 const className = {
-  root: "flex-grow flex items-center justify-center h-[calc(100vh-56px)]",
-  img: "max-h-[calc(100vh-56px)] h-auto w-auto max-w-full relative z-10",
+  root: "flex-grow flex items-center justify-center",
+  resource: "h-auto w-auto max-w-full relative z-10",
+  img: "max-h-[calc(100vh-56px)]",
+  video: "max-h-[calc(100vh-112px)]",
 };
 
 interface Props {
-  image: IExtendedImage | INormalImage;
+  resource: IVideo | IExtendedImage | INormalImage;
 }
 
-export default function Content({ image }: Props) {
+export default function Content({ resource }: Props) {
   return (
-    <section className={className.root}>
-      <Picture image={image} className={className.img} />
+    <section
+      className={classNames(
+        className.root,
+        instanceOf<IVideo>(resource, "thumbnail")
+          ? "h-[calc(100vh-112px)]"
+          : "h-[calc(100vh-56px)]"
+      )}
+    >
+      {instanceOf<IVideo>(resource, "thumbnail") ? (
+        <Video
+          video={resource}
+          classes={{ root: classNames(className.resource, className.video) }}
+          className={className.video}
+        />
+      ) : (
+        <Picture
+          image={resource}
+          className={classNames(className.resource, className.img)}
+        />
+      )}
     </section>
   );
 }

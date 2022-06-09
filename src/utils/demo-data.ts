@@ -19,7 +19,7 @@ import image828Web from "../assets/demo-images/image-828w.webp";
 import imageJpeg from "../assets/demo-images/image.jpeg";
 import imageWeb from "../assets/demo-images/image.webp";
 import { UserRole } from "./enums";
-import { IExtendedImage, IUser } from "./interfaces";
+import { IExtendedImage, IUser, IVideo } from "./interfaces";
 
 export const demoImage: IExtendedImage = {
   "1200": {
@@ -94,6 +94,12 @@ export const demoImage: IExtendedImage = {
     width: 1280,
     webpName: "demon-image.webp",
   },
+};
+
+export const demoVideo: IVideo = {
+  src: require("../assets/video.mp4"),
+  thumbnail: demoImage,
+  duration: 20000,
 };
 
 export const demoUsers: IUser[] = Array.from<unknown, IUser>(

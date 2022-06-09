@@ -4,7 +4,8 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const className = {
   controls: "flex-grow overflow-hidden w-full flex justify-between group",
-  control: "h-full w-[72px] flex items-center p-4 transform duration-200",
+  control:
+    "h-full w-[72px] shrink-0 flex items-center p-4 transform duration-200",
   activeControl:
     "bg-black/5 hover:bg-black/10 relative z-10 hover:-translate-x-1 hover:last:translate-x-1",
   btn: "rounded-full flex items-center justify-center h-10 w-10 bg-white text-neutral-700 hover:bg-zinc-100 active:scale-90",

@@ -116,3 +116,14 @@ export function getReadableFileSizeString(fileSizeInBytes: number) {
 
   return `${Math.max(fileSizeInBytes, 0.1).toFixed(1)} ${byteUnits[i]}`;
 }
+
+export function secondsToString(mil: number) {
+  const seconds = mil / 1000;
+
+  const numYears = Math.floor(seconds / 31536000);
+  const numDays = Math.floor((seconds % 31536000) / 86400);
+  const numHours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+  const numMinutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+  const numSeconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+  return [numYears, numDays, numHours, numMinutes, numSeconds] as const;
+}
