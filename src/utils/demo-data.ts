@@ -98,6 +98,7 @@ export const demoImage: IExtendedImage = {
 
 export const demoVideo: IVideo = {
   src: require("../assets/video.mp4"),
+  sdSrc: require("../assets/video.mp4"),
   thumbnail: demoImage,
   duration: 20000,
 };

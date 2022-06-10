@@ -31,6 +31,7 @@ export interface INormalImage {
 
 export interface IVideo {
   src: string;
+  sdSrc: string;
   thumbnail: INormalImage | IExtendedImage;
   duration: number;
 }
