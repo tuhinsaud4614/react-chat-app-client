@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BiPause, BiPlay } from "react-icons/bi";
 import { useTooltip } from "../../hooks";
+import Slider from "../Slider";
 import Timer from "./Timer";
 
 const className = {
@@ -31,28 +32,39 @@ export default function Status({ duration, videoRef }: Props) {
     });
   };
 
+  const onChange = (value: number) => {
+    if (videoRef.current) {
+      const newValue = Math.round(value / 1000);
+      videoRef.current.currentTime = newValue;
+      setPlayingTime(newValue * 1000);
+    }
+  };
+
   React.useEffect(() => {
     if (played) {
       const timer = setInterval(() => {
         if (videoRef.current) {
-          setPlayingTime(Math.floor(videoRef.current.currentTime) * 1000);
+          setPlayingTime(Math.round(videoRef.current.currentTime) * 1000);
         }
-      }, 1000);
+      }, 10);
 
       return () => {
         clearInterval(timer);
       };
     }
-  }, [played, playingTime, duration, videoRef]);
+  }, [played, videoRef]);
 
   React.useEffect(() => {
-    if (videoRef.current && played && playingTime >= duration) {
+    if (
+      videoRef.current &&
+      !videoRef.current.loop &&
+      played &&
+      playingTime >= duration
+    ) {
       setPlayed(false);
       setPlayingTime(0);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playingTime, videoRef]);
-
+  }, [playingTime, videoRef, played, duration]);
   return (
     <div className={className.root}>
       <button
@@ -77,7 +89,12 @@ export default function Status({ duration, videoRef }: Props) {
       <Timer duration={playingTime} />
       <span className="text-xs text-white">/</span>
       <Timer duration={duration} />
-      <div>g</div>
+      <Slider
+        value={playingTime}
+        onChange={onChange}
+        max={duration}
+        classes={{ root: "flex-grow p-1" }}
+      />
     </div>
   );
 }
