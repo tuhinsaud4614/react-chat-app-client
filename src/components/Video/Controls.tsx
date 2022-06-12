@@ -6,7 +6,7 @@ import Sounds from "./Sounds";
 import Status from "./Status";
 
 const className = {
-  root: "absolute bottom-0 left-0 right-0 z-50",
+  root: "absolute bottom-0 left-0 right-0 z-50 px-4 py-2.5",
   bar: "flex items-center",
   rightItem: "pr-1 last:!pr-0",
 };

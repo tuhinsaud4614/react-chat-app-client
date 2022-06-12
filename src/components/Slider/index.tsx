@@ -94,7 +94,7 @@ function Root({
       onChange &&
         onChange(
           direction === "horizontal"
-            ? newProgress
+            ? newProgress * (max - min)
             : Math.abs(newProgress) * (max - min)
         );
     }, 100)();
@@ -131,7 +131,8 @@ function Root({
     const progressBound = progressEle.getBoundingClientRect();
 
     ballPosition.set(
-      newProgress *
+      (direction === "horizontal" ? 1 : -1) *
+        newProgress *
         (direction === "horizontal"
           ? progressBound.width
           : progressBound.height)

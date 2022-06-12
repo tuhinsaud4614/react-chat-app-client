@@ -1,3 +1,4 @@
+import { clamp } from "lodash";
 import * as React from "react";
 import { GiSpeaker, GiSpeakerOff } from "react-icons/gi";
 import Menu from "../Menu";
@@ -20,10 +21,10 @@ export default function Sounds({ videoRef }: Props) {
     setAnchorEle(e.currentTarget);
   };
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const videoEle = videoRef.current;
     if (videoEle) {
-      videoEle.volume = volume / 100;
+      videoEle.volume = clamp(volume / 100, 0.0, 1.0);
     }
   }, [videoRef, volume]);
 

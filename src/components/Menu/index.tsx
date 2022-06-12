@@ -147,5 +147,6 @@ const MenuComponent = ({
     </Portal>
   );
 };
-const Menu = React.memo(MenuComponent, (prev, next) => prev.open === next.open);
+// const Menu = React.memo(MenuComponent, (prev, next) => prev.open === next.open);
+const Menu = MenuComponent;
 export default Menu;

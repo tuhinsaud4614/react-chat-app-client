@@ -38,7 +38,7 @@ export default function useTooltip() {
       tooltipEle.current.innerHTML = `${text}`;
       tooltipEle.current.ariaLabel = `Tooltip ${text}`;
       tooltipEle.current.className =
-        "fixed z-[999] w-auto px-1.5 py-1 min-w-max rounded-md shadow-md text-white bg-gray-900 text-xs font-bold";
+        "fixed select-none z-[999] w-auto px-1.5 py-1 min-w-max rounded-md shadow-md text-white bg-gray-900 text-xs font-bold";
     }
 
     const presentational = document.getElementById("tooltip");

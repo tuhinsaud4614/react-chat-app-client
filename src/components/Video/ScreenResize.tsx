@@ -1,8 +1,12 @@
-import { BiExpandAlt } from "react-icons/bi";
+import * as React from "react";
+import { BiExpand, BiExpandAlt } from "react-icons/bi";
 import { useTooltip } from "../../hooks";
+import VideoContext from "./context";
 
 export default function ScreenResize() {
   const { onHoverEnd, onHoverStart } = useTooltip();
+
+  const { fullScreen, setFullScreen } = React.useContext(VideoContext);
 
   return (
     <button
@@ -20,12 +24,12 @@ export default function ScreenResize() {
       onMouseLeave={() => {
         onHoverEnd();
       }}
+      onClick={() => {
+        setFullScreen && setFullScreen((prev) => !prev);
+      }}
     >
-      <BiExpandAlt size={24} />
+      {fullScreen ? <BiExpandAlt size={24} /> : <BiExpand size={24} />}
     </button>
-    // <ControlButton aria-label={"ScreenResize"}>
-    //   <BiExpandAlt size={24} />
-    // </ControlButton>
   );
 }
 
