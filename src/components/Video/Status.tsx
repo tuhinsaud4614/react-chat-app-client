@@ -2,6 +2,7 @@ import * as React from "react";
 import { BiPause, BiPlay } from "react-icons/bi";
 import { useTooltip } from "../../hooks";
 import Slider from "../Slider";
+import VideoContext from "./context";
 import Timer from "./Timer";
 
 const className = {
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function Status({ duration, videoRef }: Props) {
+  const { quality } = React.useContext(VideoContext);
   const [played, setPlayed] = React.useState(false);
   const [playingTime, setPlayingTime] = React.useState(0);
 
@@ -67,6 +69,17 @@ export default function Status({ duration, videoRef }: Props) {
       setPlayingTime(0);
     }
   }, [playingTime, videoRef, played, duration]);
+
+  React.useEffect(() => {
+    if (!videoRef.current) {
+      return;
+    }
+
+    videoRef.current.currentTime = 0;
+    setPlayed(false);
+    setPlayingTime(0);
+  }, [quality, videoRef]);
+
   return (
     <div className={className.root}>
       <button

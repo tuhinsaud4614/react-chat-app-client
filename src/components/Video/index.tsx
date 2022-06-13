@@ -1,6 +1,10 @@
 import classNames from "classnames";
 import * as React from "react";
 import { IVideo } from "../../utils/interfaces";
+import {
+  VideoPlaybackQualityType,
+  VideoPlaybackSpeedType,
+} from "../../utils/types";
 import VideoContext from "./context";
 import Controls from "./Controls";
 
@@ -22,11 +26,29 @@ interface Props
 const Video = ({ video, classes, className: cls, ...rest }: Props) => {
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const [videoSrc, setVideoSrc] = React.useState(video.src);
+  const [quality, setQuality] = React.useState<VideoPlaybackQualityType>("hd");
+  const [speed, setSpeed] = React.useState<VideoPlaybackSpeedType>(1);
   const [fullScreen, setFullScreen] = React.useState(false);
+
+  React.useEffect(() => {
+    const videoEle = videoRef.current;
+    if (videoEle) {
+      videoEle.playbackRate = speed;
+    }
+  }, [speed]);
 
   return (
     <VideoContext.Provider
-      value={{ fullScreen, videoSrc, setFullScreen, setVideoSrc }}
+      value={{
+        fullScreen,
+        setFullScreen,
+        videoSrc,
+        setVideoSrc,
+        quality,
+        setQuality,
+        speed,
+        setSpeed,
+      }}
     >
       <div
         className={classNames(
@@ -43,7 +65,7 @@ const Video = ({ video, classes, className: cls, ...rest }: Props) => {
             fullScreen && "!max-h-screen",
             cls
           )}
-          src={video.src}
+          src={quality === "hd" ? video.src : video.sdSrc}
           playsInline
           loop
         />

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { VIDEO_PLAYBACK_SPEED } from "./constants";
 
 // Component Props
 export type AsProps<T extends React.ElementType> = { as?: T };
@@ -22,3 +23,6 @@ export type PolymorphicPropsWithRef<
 
 export type AttachmentType = "DOCUMENT" | "AUDIO" | "VIDEO";
 export type MediaType = "IMAGES" | "VIDEOS" | "DOCUMENTS";
+
+export type VideoPlaybackSpeedType = typeof VIDEO_PLAYBACK_SPEED[number];
+export type VideoPlaybackQualityType = "hd" | "sd";
