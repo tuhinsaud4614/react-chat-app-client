@@ -17,7 +17,6 @@ export default function ChangePhoto() {
         !["jpg", "png", "jpeg", "gif"].includes(type) ||
         file.size > 5 * 1000000
       ) {
-        console.log("invalid image");
         return;
       }
     }

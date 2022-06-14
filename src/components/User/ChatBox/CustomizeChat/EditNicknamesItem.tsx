@@ -81,7 +81,6 @@ export default function EditNickNamesItem({ user }: Props) {
 
     // It will help to disable global click event;
     e.stopPropagation();
-    console.log(value);
   };
 
   React.useEffect(() => {

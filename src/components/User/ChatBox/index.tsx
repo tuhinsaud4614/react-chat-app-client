@@ -4,12 +4,14 @@ import {
   CHAT_BOX_MEDIA_FILES_OPTIONS,
   CHAT_BOX_OPTIONS,
 } from "../../../utils/constants";
+import ChatBoxContent from "./Content";
+import ChatBoxFooter from "./Footer";
 import ChatBoxHeader from "./Header";
 import Options from "./Options";
 
 const className = {
   root: "flex",
-  left: "h-screen flex-grow shrink",
+  left: "h-screen flex-grow shrink flex flex-col",
 };
 
 interface Props {
@@ -37,6 +39,8 @@ export default function ChatBox({ backButton }: Props) {
           onMoreClick={() => seOpenOptions((prev) => !prev)}
           backButton={backButton}
         />
+        <ChatBoxContent />
+        <ChatBoxFooter />
       </section>
       {openOptions && <Options onClose={() => seOpenOptions(false)} />}
     </main>

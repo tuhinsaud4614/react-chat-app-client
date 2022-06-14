@@ -38,7 +38,6 @@ export default function Status({ duration, videoRef }: Props) {
     if (videoRef.current) {
       const newValue = Math.round(value / 1000);
       videoRef.current.currentTime = newValue;
-      console.log(newValue);
 
       setPlayingTime(newValue * 1000);
     }

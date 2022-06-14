@@ -26,6 +26,7 @@ module.exports = {
       },
       animation: {
         tooltip: "tooltip .1s ease-out",
+        tooltipArrow: "tooltipArrow .1s ease-out",
         ripple: "ripple 600ms linear",
         "infinite-ripple": "infinite-ripple 1.2s infinite ease-in-out",
       },
@@ -38,6 +39,16 @@ module.exports = {
           "100%": {
             opacity: "1",
             transform: "scale(1)",
+          },
+        },
+        tooltipArrow: {
+          "0%": {
+            opacity: "0",
+            transform: "scale(1.2) rotate(45deg)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1) rotate(45deg)",
           },
         },
         ripple: {

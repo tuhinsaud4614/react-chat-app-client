@@ -7,9 +7,7 @@ const className = {
 };
 
 export default function ActiveFriends() {
-  const clickHandler = (id: string) => {
-    console.log(id);
-  };
+  const clickHandler = (id: string) => {};
   return (
     <section className={className.wrapper}>
       <ul className={className.root}>

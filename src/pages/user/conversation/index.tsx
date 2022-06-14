@@ -1,4 +1,3 @@
-import * as React from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import ChatBox from "../../../components/User/ChatBox";
@@ -7,6 +6,8 @@ import { HomePageRoute } from "../home";
 
 // Static path for this page
 export const ConversationPageRoute = "/c/:conversationId";
+export const ConversationPageRouteDynamic = (conversationId: string) =>
+  `/c/${conversationId}`;
 
 // constant styles
 const className = {
@@ -16,7 +17,7 @@ const className = {
 
 export default function Conversation() {
   const { conversationId } = useParams<{ conversationId: string }>();
-  console.log(conversationId);
+
   const navigate = useNavigate();
   const matches = useMediaquery("(min-width: 640px)");
 

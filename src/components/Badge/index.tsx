@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useSynchronizeAnimation } from "../../hooks";
 
 const className = {
   root: "relative",
@@ -28,6 +29,8 @@ export default function Badge({
   classes,
   ...rest
 }: Props) {
+  const rippleRef = useSynchronizeAnimation("infinite-ripple");
+
   let item = (
     <span className={classNames(className.content, classes?.root)}>
       {content}
@@ -36,6 +39,7 @@ export default function Badge({
   if (variant === "dot") {
     item = (
       <span
+        ref={rippleRef}
         className={classNames(
           className.dot,
           ripple && className.dotRipple,

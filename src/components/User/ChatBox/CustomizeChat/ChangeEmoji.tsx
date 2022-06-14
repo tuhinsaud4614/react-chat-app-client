@@ -15,7 +15,7 @@ const ControlEmoji = () => {
   const changeHandler = React.useCallback((value: string) => {
     setValue(value);
   }, []);
-  console.log(value);
+
   return (
     <EmojiBox onChange={changeHandler} classes={{ root: "max-h-[371px]" }} />
   );

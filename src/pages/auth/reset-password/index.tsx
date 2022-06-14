@@ -46,9 +46,7 @@ export default function ResetPassword() {
   const onSubmit = async (
     values: IValues,
     formikHelpers: FormikHelpers<IValues>
-  ) => {
-    console.log(values);
-  };
+  ) => {};
 
   const {
     handleSubmit,

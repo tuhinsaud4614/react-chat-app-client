@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Navigate, useSearchParams } from "react-router-dom";
 import MediaSlide from "../../../components/User/MediaSlide";
 import { HomePageRoute } from "../home";
@@ -16,7 +15,7 @@ export default function Media() {
   const conversationId = params[0].get("conversationId");
   const messageId = params[0].get("messageId");
 
-  // console.log(mediaType, conversationId, messageId);
+  //
 
   if (!mediaType || !conversationId || !messageId) {
     return <Navigate to={HomePageRoute} replace />;

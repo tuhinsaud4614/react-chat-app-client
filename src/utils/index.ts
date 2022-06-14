@@ -20,6 +20,8 @@ export const getPositions = (
     FRACTION = typeof fraction === "boolean" ? 0.89 : fraction;
   } else if (anchorOrigin.horizontal === "left" && fraction) {
     FRACTION = typeof fraction === "boolean" ? 0.11 : fraction;
+  } else if (anchorOrigin.horizontal === "left" && !fraction) {
+    FRACTION = 0;
   }
 
   if (anchorRect) {

@@ -30,13 +30,7 @@ export default function EditSearch() {
       </section>
       <ul className={className.items}>
         {demoUsers.map((user) => (
-          <EditSearchItem
-            key={user.id}
-            user={user}
-            onClear={(id) => {
-              console.log(id);
-            }}
-          />
+          <EditSearchItem key={user.id} user={user} onClear={(id) => {}} />
         ))}
       </ul>
     </div>

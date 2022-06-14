@@ -1,7 +1,10 @@
 import { motion, Variants } from "framer-motion";
+import { nanoid } from "nanoid";
 import * as React from "react";
 import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
-import { useAvatar, useRipple } from "../../../hooks";
+import { useNavigate } from "react-router-dom";
+import { useAvatar, useMediaquery, useRipple } from "../../../hooks";
+import { ConversationPageRouteDynamic } from "../../../pages/user/conversation";
 import { getUserName } from "../../../utils";
 import { IUser } from "../../../utils/interfaces";
 import Avatar from "../../Avatar";
@@ -43,6 +46,8 @@ interface Props {
 }
 
 export default function ConversationItem({ user }: Props) {
+  const navigate = useNavigate();
+  const matches = useMediaquery("(min-width: 640px)");
   const avatar = useAvatar({
     user,
     className: {
@@ -58,6 +63,13 @@ export default function ConversationItem({ user }: Props) {
 
   return (
     <motion.li
+      role="button"
+      aria-label={`Conversation-${nanoid()}`}
+      onClick={() => {
+        if (!matches) {
+          return navigate(ConversationPageRouteDynamic(user.id));
+        }
+      }}
       variants={variants}
       initial="offscreen"
       whileInView="onscreen"

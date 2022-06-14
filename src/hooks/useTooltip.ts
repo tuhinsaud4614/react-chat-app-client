@@ -9,16 +9,25 @@ interface Props {
   text: React.ReactNode;
 }
 
+const appendInDom = (node: HTMLSpanElement) => {
+  const presentational = document.getElementById("tooltip");
+  if (presentational) {
+    presentational.appendChild(node);
+  } else {
+    document.body.appendChild(node);
+  }
+};
+
 export default function useTooltip() {
   const tooltipEle = React.useRef<HTMLSpanElement | null>(null);
   const arrowEle = React.useRef<HTMLSpanElement | null>(null);
 
   const clearHandler = () => {
+    if (arrowEle.current) {
+      arrowEle.current.remove();
+      arrowEle.current = null;
+    }
     if (tooltipEle.current) {
-      if (arrowEle.current) {
-        arrowEle.current.remove();
-        arrowEle.current = null;
-      }
       tooltipEle.current.remove();
       tooltipEle.current = null;
     }
@@ -41,12 +50,7 @@ export default function useTooltip() {
         "fixed select-none z-[999] w-auto px-1.5 py-1 min-w-max rounded-md shadow-md text-white bg-gray-900 text-xs font-bold";
     }
 
-    const presentational = document.getElementById("tooltip");
-    if (presentational) {
-      presentational.appendChild(tooltipEle.current);
-    } else {
-      document.body.appendChild(tooltipEle.current);
-    }
+    appendInDom(tooltipEle.current);
 
     const currEle = e.currentTarget;
     const { arrowLeft, arrowTop, selfLeft, selfTop } = getPositions(
@@ -63,13 +67,14 @@ export default function useTooltip() {
       arrowEle.current = document.createElement("span");
       arrowEle.current.ariaLabel = `Tooltip arrow ${text}`;
       arrowEle.current.className =
-        "fixed block bg-gray-900 transform rotate-45 shadow-md w-3.5 h-3.5";
-      tooltipEle.current.appendChild(arrowEle.current);
+        "fixed block z-[998] bg-gray-900 transform rotate-45 shadow-md w-3.5 h-3.5";
+
+      appendInDom(arrowEle.current);
       arrowEle.current.style.left = `${arrowLeft}px`;
       arrowEle.current.style.top = `${arrowTop}px`;
     }
     tooltipEle.current.classList.add("animate-tooltip");
-    arrowEle.current?.classList.add("animate-tooltip");
+    arrowEle.current?.classList.add("animate-tooltipArrow");
 
     // Add extra class name
     const extraCls = splitClassName(className);

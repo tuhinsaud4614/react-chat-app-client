@@ -9,7 +9,7 @@ import Badge from "../../Badge";
 import ListTile from "../../ListTile";
 
 const className = {
-  root: "w-full flex items-center justify-between shadow-mine-b px-4 py-2.5",
+  root: "w-full flex items-center justify-between shadow-mine-b px-4 py-2.5 bg-white",
   left: "flex items-center",
   tile: "p-2.5 -my-2 hover:bg-primary/10",
   avatar: "w-10 h-10 overflow-hidden rounded-full border",
