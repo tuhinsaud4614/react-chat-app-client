@@ -74,17 +74,7 @@ export default function ChatBoxFooter() {
           });
         }
       });
-
       setAttachments([...temp]);
-
-      // const file = event.currentTarget.files[0];
-      // const type = file.type.replace("image/", "");
-      // if (
-      //   !["jpg", "png", "jpeg", "gif"].includes(type) ||
-      //   file.size > 5 * 1000000
-      // ) {
-      //   return;
-      // }
     }
   }
 
@@ -101,7 +91,9 @@ export default function ChatBoxFooter() {
   return (
     <div aria-label="Chat-Box Footer" className={className.root}>
       <AnimatePresence initial={false}>
-        {(newValue || attachments.length !== 0) && <MoreActions />}
+        {(newValue || attachments.length !== 0) && (
+          <MoreActions onFileChange={fileChangeHandler} />
+        )}
       </AnimatePresence>
       <AnimatePresence initial={false}>
         {!newValue && attachments.length === 0 && (

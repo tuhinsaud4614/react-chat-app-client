@@ -19,12 +19,12 @@ export default function GIFS() {
       animate="to"
       exit="from"
       type="button"
-      aria-label={"GIFS"}
+      aria-label="Choose a gif"
       className={className.btn}
       onClick={clickHandler}
       onMouseEnter={(e) => {
         onHoverStart(e, {
-          text: "GIFS",
+          text: "Choose a gif",
           anchorOrigin: { vertical: "top", horizontal: "center" },
         });
       }}

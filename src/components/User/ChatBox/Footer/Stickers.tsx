@@ -18,12 +18,12 @@ export default function Stickers() {
       animate="to"
       exit="from"
       type="button"
-      aria-label={"Stickers"}
+      aria-label="Choose a sticker"
       className={className.btn}
       onClick={clickHandler}
       onMouseEnter={(e) => {
         onHoverStart(e, {
-          text: "Stickers",
+          text: "Choose a sticker",
           anchorOrigin: { vertical: "top", horizontal: "center" },
         });
       }}
