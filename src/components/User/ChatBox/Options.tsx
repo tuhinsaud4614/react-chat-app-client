@@ -11,7 +11,7 @@ import OptionsHead from "./OptionsHead";
 const className = {
   rootModal: "fixed z-[901] top-0 right-0 bottom-0 shadow-mine-2",
   rootCommon: "bg-white h-screen",
-  root: "w-3/4 min-w-[250px] sm:w-2/4 sm:min-w-[50%] md1:min-w-[250px] md1:basis-[33%] md1:border-l",
+  root: "w-3/4 min-w-[250px] max-w-sm md1:min-w-[250px] md1:basis-1/3 md1:max-w-sm md1:border-l",
 };
 
 interface Props {

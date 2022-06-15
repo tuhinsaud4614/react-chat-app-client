@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import * as React from "react";
 import { useLocalStorage } from "../../../hooks";
 import {
@@ -10,8 +11,7 @@ import ChatBoxHeader from "./Header";
 import Options from "./Options";
 
 const className = {
-  root: "flex",
-  left: "h-screen flex-grow shrink flex flex-col",
+  left: "h-screen flex-grow basis-0 shrink flex flex-col max-w-full overflow-hidden",
 };
 
 interface Props {
@@ -32,8 +32,8 @@ export default function ChatBox({ backButton }: Props) {
   }, [openOptions]);
 
   return (
-    <main className={className.root}>
-      <section className={className.left}>
+    <React.Fragment>
+      <section className={classNames(className.left)}>
         <ChatBoxHeader
           moreOpen={openOptions}
           onMoreClick={() => seOpenOptions((prev) => !prev)}
@@ -43,6 +43,6 @@ export default function ChatBox({ backButton }: Props) {
         <ChatBoxFooter />
       </section>
       {openOptions && <Options onClose={() => seOpenOptions(false)} />}
-    </main>
+    </React.Fragment>
   );
 }

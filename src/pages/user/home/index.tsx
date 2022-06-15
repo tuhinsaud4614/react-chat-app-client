@@ -4,8 +4,8 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 
 const className = {
   root: "flex bg-zinc-50",
-  left: "w-full sm:max-w-xs",
-  main: "flex-grow shrink border-l",
+  left: "w-full sm:w-80",
+  main: "flex-grow shrink flex border-l w-screen sm:w-[calc(100vw-20rem)]",
 };
 
 // Static path for this page
@@ -19,9 +19,9 @@ export default function Home() {
         <Conversation />
       </div>
       {matches && (
-        <div className={className.main}>
+        <main className={className.main}>
           <ChatBox conversationId="1" />
-        </div>
+        </main>
       )}
     </section>
   );

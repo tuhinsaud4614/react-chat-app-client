@@ -21,7 +21,7 @@ export type PolymorphicPropsWithRef<
   Props = {}
 > = PolymorphicProps<T, Props> & { ref?: PolymorphicRef<T> };
 
-export type AttachmentType = "DOCUMENT" | "AUDIO" | "VIDEO";
+export type AttachmentType = "DOCUMENT" | "AUDIO" | "VIDEO" | "IMAGE";
 export type MediaType = "IMAGES" | "VIDEOS" | "DOCUMENTS";
 
 export type VideoPlaybackSpeedType = typeof VIDEO_PLAYBACK_SPEED[number];

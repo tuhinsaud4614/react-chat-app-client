@@ -21,3 +21,14 @@ export const sidebarVariants: Variants = {
     },
   },
 };
+
+export const chatBoxBtnVariants: Variants = {
+  from: {
+    scale: 0,
+    opacity: 0,
+  },
+  to: {
+    scale: 1,
+    opacity: 1,
+  },
+};
